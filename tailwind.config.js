@@ -8,12 +8,26 @@ module.exports = {
   safelist: [
     {
       pattern:
-        /(bg|border|text|stroke|fill)-(primary|secondary|tertiary|error|success|warning|info|typography|outline|background|indicator)-(0|50|100|200|300|400|500|600|700|800|900|950|white|gray|black|error|warning|muted|success|info|light|dark|primary)/,
+        /(bg|border|text|stroke|fill)-(primary|secondary|tertiary|error|success|warning|info|typography|outline|background|indicator)-(0|50|100|200|300|400|500|600|700|800|900|950)/,
     },
   ],
   theme: {
     extend: {
       colors: {
+        brand: {
+          0: "#8892d3",
+          50: "#7c86cb",
+          100: "#707bc2",
+          200: "#6570b8",
+          300: "#5b66ae",
+          400: "#515da6",
+          500: "#505a98",
+          600: "#50588d",
+          700: "#4e5582",
+          800: "#4d5377",
+          900: "#4b506d",
+          950: "#494c63",
+        },
         primary: {
           0: "rgb(var(--color-primary-0)/<alpha-value>)",
           50: "rgb(var(--color-primary-50)/<alpha-value>)",
@@ -126,7 +140,7 @@ module.exports = {
           950: "rgb(var(--color-typography-950)/<alpha-value>)",
           white: "#FFFFFF",
           gray: "#D4D4D4",
-          black: "#181718",
+          black: "#000000",
         },
         outline: {
           0: "rgb(var(--color-outline-0)/<alpha-value>)",
@@ -174,6 +188,7 @@ module.exports = {
         body: undefined,
         mono: undefined,
         roboto: ["Roboto", "sans-serif"],
+        saudi: ["Saudi", "SaudiBold", "sans-serif"],
       },
       fontWeight: {
         extrablack: "950",

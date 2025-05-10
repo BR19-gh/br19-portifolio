@@ -1,0 +1,21 @@
+{
+  "locale": {
+    "en": "English",
+    "ar": "العربية",
+    "isoCode": {
+      "en": "gb",
+      "ar": "sa"
+    }
+  },
+  "welcome": "Hello",
+  "close": "Close",
+  "tab": {
+    "menu": "Menu",
+    "navigateTo": "Navigate to",
+    "home": "Home",
+    "aboutMe": "About Me",
+    "projects": "Projects",
+    "stats": "Stats",
+    "resume": "Resume"
+  }
+}

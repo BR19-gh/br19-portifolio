@@ -1,0 +1,21 @@
+{
+  "locale": {
+    "en": "English",
+    "ar": "العربية",
+    "isoCode": {
+      "en": "gb",
+      "ar": "sa"
+    }
+  },
+  "welcome": "مرحــــــبا",
+  "close": "إغلاق",
+  "tab": {
+    "menu": "القائمة",
+    "navigateTo": "الانتقال إلى",
+    "home": "الرئيسية",
+    "aboutMe": "عني",
+    "projects": "المشاريع",
+    "stats": "الإحصائيات",
+    "resume": "السيرة"
+  }
+}
