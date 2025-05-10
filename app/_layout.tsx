@@ -4,36 +4,40 @@ import {
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { ThemeProviderCustom, useThemeCustom } from "@/contexts/ThemeContext";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect, useState } from "react";
 import { GluestackUIProvider } from "@/components/ui/gluestack-ui-provider";
-import { useColorScheme } from "@/components/useColorScheme";
-import { Slot } from "expo-router";
-
 import "../global.css";
+import i18n from "@/localization";
+import { getLocales } from "expo-localization";
+import { LocalizationProvider } from "@/contexts/LocalizationContext";
+import { ImageBackground, StyleSheet } from "react-native";
 
 export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from "expo-router";
 
-// export const unstable_settings = {
-//   // Ensure that reloading on `/modal` keeps a back button present.
-//   initialRouteName: "gluestack",
-// };
-
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+  const defaultLocale = getLocales()[0]?.languageCode || "en";
+  i18n.locale = defaultLocale;
+  i18n.enableFallback = true;
+
   const [loaded, error] = useFonts({
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
+    Saudi: require("../assets/fonts/Saudi-Regular.otf"),
+    SaudiBold: require("../assets/fonts/Saudi-Bold.otf"),
+
     ...FontAwesome.font,
   });
 
   const [styleLoaded, setStyleLoaded] = useState(false);
-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.
+
   useEffect(() => {
     if (error) throw error;
   }, [error]);
@@ -44,24 +48,56 @@ export default function RootLayout() {
     }
   }, [loaded]);
 
-  // useLayoutEffect(() => {
-  //   setStyleLoaded(true);
-  // }, [styleLoaded]);
+  useEffect(() => {
+    if (loaded) {
+      setStyleLoaded(true);
+    }
+  }, [loaded]);
 
-  // if (!loaded || !styleLoaded) {
-  //   return null;
-  // }
+  if (!loaded || !styleLoaded) {
+    return null;
+  }
 
   return <RootLayoutNav />;
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
+  return (
+    <ThemeProviderCustom>
+      <InnerLayout />
+    </ThemeProviderCustom>
+  );
+}
+
+export const unstable_settings = {
+  // Ensure that reloading on `/modal` keeps a back button present.
+  initialRouteName: "(tabs)",
+};
+
+import { Stack } from "expo-router";
+import { BackgroundDark, BackgroundLight } from "@/assets/images";
+
+function InnerLayout() {
+  const { colorScheme } = useThemeCustom();
 
   return (
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Slot />
+        <ImageBackground
+          source={colorScheme === "dark" ? BackgroundDark : BackgroundLight}
+          imageStyle={{
+            resizeMode: "cover",
+            position: "absolute",
+            width: "100%",
+            height: 1300,
+          }}
+        >
+          <LocalizationProvider>
+            <Stack>
+              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            </Stack>
+          </LocalizationProvider>
+        </ImageBackground>
       </ThemeProvider>
     </GluestackUIProvider>
   );
