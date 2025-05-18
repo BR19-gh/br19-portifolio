@@ -36,13 +36,14 @@ export default function Home() {
   const textDir = useLocaleAlignment("textDir", language);
   return (
     <Center
+      className={isPC ? "scale-125" : "scale-100"}
       style={{
-        marginTop: isPC ? 100 : 20,
+        marginTop: isPC ? 150 : 20,
         direction: textDir as TextDirection,
       }}
     >
       <XStack className={isPC ? "gap-48" : "gap-20"}>
-        <VStack className={isPhone || isTablet ? "gap-3" : "gap-6"}>
+        <VStack className={isPhone || isTablet ? "gap-3" : "gap-4"}>
           <CustomHeading size="5xl">{i18n.t("home.header")}</CustomHeading>
           <CustomHeading size="3xl">{i18n.t("home.title")}</CustomHeading>
           <HStack className="gap-2">
@@ -102,7 +103,10 @@ export default function Home() {
           </HStack>
         </VStack>
         <Tilt
-          className="flex h-[300px] w-[300px] content-center items-center justify-center rounded-xl bg-gradient-to-r from-primary-800 to-primary-400"
+          className={
+            "flex h-72 w-72 content-center items-center justify-center rounded-xl bg-gradient-to-r from-primary-800 to-primary-400" +
+            (isPhone ? " mt-16" : "")
+          }
           style={{
             boxShadow: "0 48px 60px 0 rgba(2,14,26,.24)",
             transformStyle: "preserve-3d",
@@ -111,8 +115,8 @@ export default function Home() {
           <Image
             source={Sticker}
             style={{
-              width: isPhone || isTablet ? s(250) : s(150),
-              height: isPhone || isTablet ? vs(250) : vs(150),
+              width: 280,
+              height: 280,
               transform: "translateZ(60px)",
             }}
           />
