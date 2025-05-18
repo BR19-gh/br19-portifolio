@@ -16,7 +16,6 @@ import {
 import { Heading } from "@/components/ui/heading";
 import { View, ViewProps, Text } from "react-native";
 import { HStack } from "@/components/ui/hstack";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useRouter } from "expo-router"; // Import useRouter
 import { useThemeCustom } from "@/contexts/ThemeContext";
 import useLocaleAlignment, { FlexDirection } from "@/hooks/useLocaleAlignment";
@@ -41,7 +40,10 @@ import {
   X,
   MenuIcon,
   User,
+  CheckCircle,
+  MinusCircle,
 } from "lucide-react-native";
+import { NavigateButtonProps } from "./drawer-tabs.types";
 
 function DrawerTabs(
   props: React.JSX.IntrinsicAttributes &
@@ -52,24 +54,28 @@ function DrawerTabs(
   const { language, setLanguage } = useLocalization();
   const dir = useLocaleAlignment("dir", language);
   const reverseDir = useLocaleAlignment("reverseDir", language);
-  const { colorScheme } = useThemeCustom();
-  const isDark = colorScheme === "dark";
-  const themedTextColor = isDark ? "white" : "black";
+  const { themedTextColor } = useThemeCustom();
   const router = useRouter();
+  const [activeRoute, setActiveRoute] = React.useState<string | null>(
+    "/(tabs)/home"
+  );
 
   const handleNavigate = (
     route:
-      | "/(tabs)"
+      | "/(tabs)/home"
       | "/(tabs)/aboutMe"
       | "/(tabs)/projects"
       | "/(tabs)/stats"
       | "/(tabs)/resume"
   ) => {
+    setActiveRoute(route);
     router.push(route);
     setShowDrawer(false); // Close the drawer after navigation
   };
 
-  const ChangeLanguage: React.FC = () => {
+  const ChangeLanguage: React.FC<{
+    size?: "sm" | "md" | "lg" | "xl" | "2xs" | "xs";
+  }> = ({ size }) => {
     return (
       <Menu
         placement="top"
@@ -77,27 +83,33 @@ function DrawerTabs(
         trigger={({ ...triggerProps }) => {
           return (
             <Pressable variant="link" {...triggerProps}>
-              <Icon as={Globe} size={"lg"} />
+              <Icon as={Globe} size={size ? size : "lg"} />
             </Pressable>
           );
         }}
       >
         {(Object.values(SupportedLanguages) as Languages[]).map((lang) => {
+          const isSelected = language === lang;
           return (
             <MenuItem
-              className="justify-between"
+              className={"justify-between"}
               onPress={() => {
                 const newLanguage: Languages = lang;
                 setLanguage(newLanguage);
-                console.log("language", newLanguage);
               }}
               key={lang}
             >
+              <Icon
+                as={isSelected ? CheckCircle : MinusCircle}
+                className={isSelected ? "text-success-500" : ""}
+                size="xs"
+              />
               <CountryFlag
                 isoCode={i18n.t(`locale.isoCode.${lang}`)}
                 size={14}
               />
-              <MenuItemLabel size="sm">
+
+              <MenuItemLabel size="sm" className={"font-saudi"}>
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
             </MenuItem>
@@ -107,41 +119,37 @@ function DrawerTabs(
     );
   };
 
-  interface NavigateButtonProps {
-    text: string;
-    icon: LucideIcon;
-    route:
-      | "/(tabs)"
-      | "/(tabs)/aboutMe"
-      | "/(tabs)/projects"
-      | "/(tabs)/stats"
-      | "/(tabs)/resume";
-  }
-
   const NavigateButton: React.FC<NavigateButtonProps> = ({
     text,
     icon,
     route,
-  }) => (
-    <Button
-      onPress={() => handleNavigate(route)}
-      className="w-full h-32 flex-wrap items-center rounded-xl p-3 justify-around"
-      style={{
-        flexDirection: dir as FlexDirection,
-      }}
-      size="xl"
-      action="secondary"
-    >
-      <ButtonText className="text-2xl" style={{ color: themedTextColor }}>
-        {i18n.t(text)}
-      </ButtonText>
-      <ButtonIcon
-        as={icon}
-        className="w-10 h-10"
-        style={{ color: themedTextColor }}
-      />
-    </Button>
-  );
+  }) => {
+    const pressed = activeRoute === route;
+
+    return (
+      <Button
+        onPress={() => handleNavigate(route)}
+        className="w-full h-32 flex-wrap items-center rounded-xl p-3 justify-around"
+        style={{
+          flexDirection: dir as FlexDirection,
+        }}
+        size="xl"
+        action={activeRoute === route ? "primary" : "secondary"}
+      >
+        <ButtonText
+          className={"text-4xl " + (pressed ? "font-saudi-bold" : "font-saudi")}
+          style={{ color: themedTextColor() }}
+        >
+          {i18n.t(text)}
+        </ButtonText>
+        <ButtonIcon
+          as={icon}
+          className="w-12 h-12"
+          style={{ color: themedTextColor() }}
+        />
+      </Button>
+    );
+  };
 
   return (
     <HStack
@@ -154,33 +162,41 @@ function DrawerTabs(
     >
       <Button
         action="secondary"
-        size="sm"
+        size="lg"
         onPress={() => {
           setShowDrawer(true); // Open the drawer
         }}
       >
-        <Icon as={MenuIcon} style={{ color: themedTextColor }} />
+        <Icon as={MenuIcon} size="xl" style={{ color: themedTextColor() }} />
       </Button>
       <Drawer
         isOpen={showDrawer}
         onClose={() => {
           setShowDrawer(false); // Close the drawer
         }}
-        size="lg"
+        size="full"
         anchor={"right"}
       >
         <DrawerBackdrop />
         <DrawerContent>
-          <DrawerHeader style={{ flexDirection: dir as FlexDirection }}>
-            <Heading size="xl">{i18n.t("tab.navigateTo")}</Heading>
+          <DrawerHeader
+            className="mb-5"
+            style={{ flexDirection: dir as FlexDirection }}
+          >
+            <Heading
+              size="2xl"
+              className={language === "ar" ? "font-saudi" : ""}
+            >
+              {i18n.t("tab.navigateTo")}
+            </Heading>
             <HStack
               className="gap-10"
               style={{
                 flexDirection: reverseDir as FlexDirection,
               }}
             >
-              <ChangeTheme />
-              <ChangeLanguage />
+              <ChangeTheme size="xl" />
+              <ChangeLanguage size="xl" />
             </HStack>
           </DrawerHeader>
           <DrawerBody>
@@ -188,7 +204,11 @@ function DrawerTabs(
               flexDirection="row"
               className="flex-wrap justify-center gap-3"
             >
-              <NavigateButton text="tab.home" icon={House} route="/(tabs)" />
+              <NavigateButton
+                text="tab.home"
+                icon={House}
+                route="/(tabs)/home"
+              />
               <NavigateButton
                 text="tab.aboutMe"
                 icon={User}
@@ -229,10 +249,10 @@ function DrawerTabs(
               onPress={() => {
                 setShowDrawer(false);
               }}
-              className="flex-1 rounded-xl"
+              className="flex-1 rounded-xl h-14"
               size="xl"
             >
-              <Icon className="w-10" as={X} color={themedTextColor} />
+              <Icon className="w-12 h-12" as={X} color={themedTextColor()} />
             </Button>
           </DrawerFooter>
         </DrawerContent>

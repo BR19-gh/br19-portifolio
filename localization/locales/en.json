@@ -17,5 +17,13 @@
     "projects": "Projects",
     "stats": "Stats",
     "resume": "Resume"
+  },
+  "home": {
+    "position1": "Fullstack Developer",
+    "position2": "Mobile Developer",
+    "header": "Hello World!",
+    "title": "I'm Ibrahim Alkhowaiter",
+    "subtitle": "And I'm",
+    "aboutMe": "About Me"
   }
 }

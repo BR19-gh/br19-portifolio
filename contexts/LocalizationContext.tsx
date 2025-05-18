@@ -9,6 +9,9 @@ import { getLocales } from "expo-localization";
 import i18n from "../localization";
 import { getItem, saveItem } from "@/services/StorageService";
 import { LANGUAGE_STORAGE_KEY } from "@/constants/Keys";
+import { Center } from "@/components/ui/center";
+import ClipLoader from "react-spinners/ClipLoader";
+import colors from "tailwindcss/colors";
 
 enum LanguagesEnum {
   ar = "ar",
@@ -29,6 +32,7 @@ const LocalizationContext = createContext<LocalizationContextType | undefined>(
 
 export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguageState] = useState<Languages>("en");
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const loadLanguage = async () => {
@@ -52,15 +56,33 @@ export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
   }, []);
 
   const setLanguage = async (lang: Languages) => {
+    setIsLoading(true);
     setLanguageState(lang);
     i18n.locale = lang;
     await saveItem(LANGUAGE_STORAGE_KEY, lang);
-    window.location.reload();
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 1000);
   };
 
   return (
     <LocalizationContext.Provider value={{ language, setLanguage }}>
-      {children}
+      {isLoading ? (
+        <Center className="flex-1 justify-center items-center">
+          <ClipLoader
+            color={colors.indigo[500]}
+            loading={isLoading}
+            size={150}
+            cssOverride={{
+              display: "block",
+              margin: "auto",
+              marginTop: "260px",
+            }}
+          />
+        </Center>
+      ) : (
+        children
+      )}
     </LocalizationContext.Provider>
   );
 };

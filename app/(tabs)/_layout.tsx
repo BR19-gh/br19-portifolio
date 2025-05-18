@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Tabs, TabList, TabTrigger, TabSlot } from "expo-router/ui";
-import { Text, View } from "react-native";
+import { Text } from "react-native";
 import { useLocaleAlignment } from "@/hooks";
 import {
   Languages,
@@ -14,45 +14,47 @@ import i18n from "@/localization";
 import tabStyles from "@/app/(tabs)/tab.styles";
 import { s, ms } from "react-native-size-matters";
 import { HStack } from "@/components/ui/hstack";
-import { ChangeTheme } from "@/components/Tab/change-theme";
-import { DrawerTabs } from "@/components/Tab/drawer-tabs";
-import { Logo } from "@/components/Tab";
+import { ChangeTheme } from "@/components/tab/change-theme";
+import { DrawerTabs } from "@/components/tab/drawer-tabs";
+import { Logo } from "@/components/tab";
+import AnimatedWrapper from "@/components/tab/animated-wrapper/animated-wrapper.screen";
 import { Menu, MenuItem, MenuItemLabel } from "@/components/ui/menu";
 import { Pressable } from "@/components/ui/pressable";
 import { Icon } from "@/components/ui/icon";
-import { Globe } from "lucide-react-native";
+import { CheckCircle, Globe, MinusCircle } from "lucide-react-native";
 import CountryFlag from "react-native-country-flag";
+import { useWindowWidth } from "@/contexts/WindowWidthContext";
 
 export default function TabLayout() {
   const { language, setLanguage } = useLocalization(); // استخدام context لاختيار اللغة
   const dir = useLocaleAlignment("dir", language);
   const reverseFlex = useLocaleAlignment("reverseFlex", language);
-  const reverseDir = useLocaleAlignment("reverseDir", language);
-  const { colorScheme } = useThemeCustom();
+  const { colorScheme, themedTextColor } = useThemeCustom();
   const isDark = colorScheme === "dark";
-  const themedTextColor = isDark ? "white" : "black";
   const pathname = usePathname();
-  const [isWindowWidthSmall, setIsWindowWidthSmall] = React.useState(
-    window.innerWidth <= 768
-  );
+  const { isPhone } = useWindowWidth();
 
-  const ChangeLanguage: React.FC = () => {
+  const ChangeLanguage: React.FC<{
+    size?: "sm" | "md" | "lg" | "xl" | "2xs" | "xs";
+  }> = ({ size }) => {
     return (
       <Menu
         placement="top"
+        offset={10}
         disabledKeys={["none"]}
         trigger={({ ...triggerProps }) => {
           return (
             <Pressable variant="link" {...triggerProps}>
-              <Icon as={Globe} size={"lg"} />
+              <Icon as={Globe} size={size ? size : "lg"} />
             </Pressable>
           );
         }}
       >
         {(Object.values(SupportedLanguages) as Languages[]).map((lang) => {
+          const isSelected = language === lang;
           return (
             <MenuItem
-              className="justify-between"
+              className={"justify-between"}
               onPress={() => {
                 const newLanguage: Languages = lang;
                 setLanguage(newLanguage);
@@ -60,11 +62,17 @@ export default function TabLayout() {
               }}
               key={lang}
             >
+              <Icon
+                as={isSelected ? CheckCircle : MinusCircle}
+                className={isSelected ? "text-success-500" : ""}
+                size="xs"
+              />
               <CountryFlag
                 isoCode={i18n.t(`locale.isoCode.${lang}`)}
                 size={14}
               />
-              <MenuItemLabel size="sm">
+
+              <MenuItemLabel size="sm" className={"font-saudi"}>
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
             </MenuItem>
@@ -84,22 +92,15 @@ export default function TabLayout() {
     pressed?: boolean;
   }) => (
     <Text
-      className="text-lg"
-      style={{ color: color, fontWeight: pressed ? "bold" : "normal" }}
+      className={
+        (language === "ar" ? "text-xl" : "text-2xl") +
+        (pressed ? " font-saudi-bold" : " font-saudi")
+      }
+      style={{ color: color }}
     >
       {text}
     </Text>
   );
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsWindowWidthSmall(window.innerWidth <= 768);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   return (
     <Tabs>
@@ -117,26 +118,26 @@ export default function TabLayout() {
             ? "rgba(255, 255, 255, 0.1)"
             : "rgba(0, 0, 0, 0.05)",
           backdropFilter: "blur(20px)",
-          gap: ms(15),
+          gap: ms(20),
         }}
       >
         <Logo />
 
-        {isWindowWidthSmall ? <DrawerTabs /> : null}
+        {isPhone ? <DrawerTabs /> : null}
         <>
           <TabTrigger
             name="home"
-            href="/(tabs)"
+            href="/home"
             style={tabStyles.tabText(
-              pathname === "/",
-              isWindowWidthSmall,
-              themedTextColor
+              pathname === "/home",
+              isPhone,
+              themedTextColor()
             )}
           >
             <TabText
-              color={themedTextColor}
+              color={themedTextColor()}
               text={i18n.t("tab.home")}
-              pressed={pathname === "/"}
+              pressed={pathname === "/home"}
             />
           </TabTrigger>
           <TabTrigger
@@ -144,12 +145,12 @@ export default function TabLayout() {
             href="/(tabs)/aboutMe"
             style={tabStyles.tabText(
               pathname === "/aboutMe",
-              isWindowWidthSmall,
-              themedTextColor
+              isPhone,
+              themedTextColor()
             )}
           >
             <TabText
-              color={themedTextColor}
+              color={themedTextColor()}
               text={i18n.t("tab.aboutMe")}
               pressed={pathname === "/aboutMe"}
             />
@@ -159,12 +160,12 @@ export default function TabLayout() {
             href="/(tabs)/projects"
             style={tabStyles.tabText(
               pathname === "/projects",
-              isWindowWidthSmall,
-              themedTextColor
+              isPhone,
+              themedTextColor()
             )}
           >
             <TabText
-              color={themedTextColor}
+              color={themedTextColor()}
               text={i18n.t("tab.projects")}
               pressed={pathname === "/projects"}
             />
@@ -174,12 +175,12 @@ export default function TabLayout() {
             href="/(tabs)/stats"
             style={tabStyles.tabText(
               pathname === "/stats",
-              isWindowWidthSmall,
-              themedTextColor
+              isPhone,
+              themedTextColor()
             )}
           >
             <TabText
-              color={themedTextColor}
+              color={themedTextColor()}
               text={i18n.t("tab.stats")}
               pressed={pathname === "/stats"}
             />
@@ -189,19 +190,19 @@ export default function TabLayout() {
             href="/(tabs)/resume"
             style={tabStyles.tabText(
               pathname === "/resume",
-              isWindowWidthSmall,
-              themedTextColor
+              isPhone,
+              themedTextColor()
             )}
           >
             <TabText
-              color={themedTextColor}
+              color={themedTextColor()}
               text={i18n.t("tab.resume")}
               pressed={pathname === "/resume"}
             />
           </TabTrigger>
           <HStack
             style={{
-              display: isWindowWidthSmall ? "none" : "flex",
+              display: isPhone ? "none" : "flex",
               width: "100%",
               justifyContent: reverseFlex as FlexAlignment,
               padding: ms(5),
@@ -209,9 +210,9 @@ export default function TabLayout() {
           >
             <HStack
               style={{
-                display: isWindowWidthSmall ? "none" : "flex",
+                display: isPhone ? "none" : "flex",
                 flexDirection: dir as FlexDirection,
-                gap: ms(50),
+                gap: ms(45),
                 alignItems: "center",
               }}
             >
@@ -221,7 +222,9 @@ export default function TabLayout() {
           </HStack>
         </>
       </TabList>
-      <TabSlot />
+      <AnimatedWrapper key={pathname}>
+        <TabSlot />
+      </AnimatedWrapper>
     </Tabs>
   );
 }

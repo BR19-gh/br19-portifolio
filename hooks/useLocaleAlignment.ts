@@ -3,6 +3,7 @@ export enum AlignmentTypesEnum {
   text = "text",
   align = "align",
   dir = "dir",
+  textDir = "textDir",
   reverseFlex = "reverseFlex",
   reverseText = "reverseText",
   reverseAlign = "reverseAlign",
@@ -15,11 +16,22 @@ export type FlexAlignment = "flex-start" | "flex-end";
 export type TextAlignment = "left" | "right";
 export type AlignPosition = "start" | "end";
 export type FlexDirection = "row-reverse" | "row";
+export type TextDirection = "rtl" | "ltr";
 
 type Alignments = {
   [key in AlignmentTypes]: {
-    ltr: FlexAlignment | TextAlignment | AlignPosition | FlexDirection;
-    rtl: FlexAlignment | TextAlignment | AlignPosition | FlexDirection;
+    ltr:
+      | FlexAlignment
+      | TextAlignment
+      | AlignPosition
+      | FlexDirection
+      | TextDirection;
+    rtl:
+      | FlexAlignment
+      | TextAlignment
+      | AlignPosition
+      | FlexDirection
+      | TextDirection;
   };
 };
 
@@ -39,6 +51,10 @@ const Alignments = {
   dir: {
     rtl: "row-reverse",
     ltr: "row",
+  },
+  textDir: {
+    rtl: "rtl",
+    ltr: "ltr",
   },
   reverseFlex: {
     ltr: "flex-end",
@@ -60,7 +76,7 @@ const Alignments = {
 
 export default function useLocaleAlignment(
   type: AlignmentTypes = "flex",
-  language: string = "en"
+  language: string
 ) {
   const isRTL = language === "ar";
 

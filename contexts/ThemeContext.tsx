@@ -15,6 +15,7 @@ type Theme = "light" | "dark" | "system";
 interface ThemeContextType {
   colorScheme: Theme;
   toggleColorScheme: () => void;
+  themedTextColor: () => string;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -45,8 +46,14 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
     await saveItem(THEME_STORAGE_KEY, newTheme);
   }, [colorScheme]);
 
+  const themedTextColor = useCallback(() => {
+    return colorScheme === "dark" ? "#FFFFFF" : "#000000";
+  }, [colorScheme]);
+
   return (
-    <ThemeContext.Provider value={{ colorScheme, toggleColorScheme }}>
+    <ThemeContext.Provider
+      value={{ colorScheme, toggleColorScheme, themedTextColor }}
+    >
       {children}
     </ThemeContext.Provider>
   );
