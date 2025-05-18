@@ -9,9 +9,6 @@ const styles = {
     themedTextColor: string
   ) => ({
     display: isWindowWidthSmall ? ("none" as Display) : ("flex" as Display),
-    borderBottomWidth: s(2),
-    borderBottomColor: pressed ? themedTextColor : "transparent",
-    paddingBottom: vs(4),
   }),
 };
 
