@@ -4,7 +4,9 @@ import { Pressable } from "react-native";
 import { useThemeCustom } from "@/contexts/ThemeContext";
 import { Icon } from "@/components/ui/icon";
 
-const ChangeTheme: React.FC = () => {
+const ChangeTheme: React.FC<{
+  size?: "sm" | "md" | "lg" | "xl" | "2xs" | "xs";
+}> = ({ size }) => {
   const { toggleColorScheme, colorScheme } = useThemeCustom();
   const isDark = colorScheme === "dark";
   return (
@@ -13,7 +15,7 @@ const ChangeTheme: React.FC = () => {
         toggleColorScheme();
       }}
     >
-      <Icon as={isDark ? Moon : Sun} size={"lg"} />
+      <Icon as={isDark ? Moon : Sun} size={size ? size : "lg"} />
     </Pressable>
   );
 };

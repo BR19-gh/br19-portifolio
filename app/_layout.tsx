@@ -13,7 +13,10 @@ import "../global.css";
 import i18n from "@/localization";
 import { getLocales } from "expo-localization";
 import { LocalizationProvider } from "@/contexts/LocalizationContext";
-import { ImageBackground, StyleSheet } from "react-native";
+import { ImageBackground } from "react-native";
+import { Stack } from "expo-router";
+import { BackgroundDark, BackgroundLight } from "@/assets/images";
+import { WindowWidthProvider } from "@/contexts/WindowWidthContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -32,6 +35,9 @@ export default function RootLayout() {
     SpaceMono: require("../assets/fonts/SpaceMono-Regular.ttf"),
     Saudi: require("../assets/fonts/Saudi-Regular.otf"),
     SaudiBold: require("../assets/fonts/Saudi-Bold.otf"),
+    Handjet: require("../assets/fonts/Handjet-Regular.ttf"),
+    HandjetSemiBold: require("../assets/fonts/Handjet-SemiBold.ttf"),
+    HandjetBold: require("../assets/fonts/Handjet-Bold.ttf"),
 
     ...FontAwesome.font,
   });
@@ -74,9 +80,6 @@ export const unstable_settings = {
   initialRouteName: "(tabs)",
 };
 
-import { Stack } from "expo-router";
-import { BackgroundDark, BackgroundLight } from "@/assets/images";
-
 function InnerLayout() {
   const { colorScheme } = useThemeCustom();
 
@@ -93,9 +96,11 @@ function InnerLayout() {
           }}
         >
           <LocalizationProvider>
-            <Stack>
-              <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-            </Stack>
+            <WindowWidthProvider>
+              <Stack>
+                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+              </Stack>
+            </WindowWidthProvider>
           </LocalizationProvider>
         </ImageBackground>
       </ThemeProvider>

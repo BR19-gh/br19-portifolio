@@ -186,9 +186,23 @@ module.exports = {
       fontFamily: {
         heading: undefined,
         body: undefined,
-        mono: undefined,
+        mono: ["Courier", "CourierNew", "monospace"],
         roboto: ["Roboto", "sans-serif"],
         saudi: ["Saudi", "SaudiBold", "sans-serif"],
+        "saudi-bold": ["SaudiBold", "Saudi", "sans-serif"],
+        handjet: ["Handjet", "HandjetSemiBold", "HandjetBold", "sans-serif"],
+        "handjet-semi": [
+          "HandjetSemiBold",
+          "HandjetBold",
+          "Handjet",
+          "sans-serif",
+        ],
+        "handjet-bold": [
+          "HandjetBold",
+          "HandjetSemiBold",
+          "Handjet",
+          "sans-serif",
+        ],
       },
       fontWeight: {
         extrablack: "950",
