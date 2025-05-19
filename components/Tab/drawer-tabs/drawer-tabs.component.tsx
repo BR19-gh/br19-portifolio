@@ -109,7 +109,10 @@ function DrawerTabs(
                 size={14}
               />
 
-              <MenuItemLabel size="sm" className={"font-saudi"}>
+              <MenuItemLabel
+                size="sm"
+                className={`${language === "ar" ? "font-saudi" : ""}`}
+              >
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
             </MenuItem>
@@ -137,7 +140,12 @@ function DrawerTabs(
         action={activeRoute === route ? "primary" : "secondary"}
       >
         <ButtonText
-          className={"text-4xl " + (pressed ? "font-saudi-bold" : "font-saudi")}
+          className={
+            "text-4xl " +
+            (pressed
+              ? `${language === "ar" ? "font-saudi-bold" : "font-bold"}`
+              : `${language === "ar" ? "font-saudi" : ""}`)
+          }
           style={{ color: themedTextColor() }}
         >
           {i18n.t(text)}

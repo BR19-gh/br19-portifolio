@@ -72,7 +72,10 @@ export default function TabLayout() {
                 size={14}
               />
 
-              <MenuItemLabel size="sm" className={"font-saudi"}>
+              <MenuItemLabel
+                size="sm"
+                className={`${language === "ar" ? "font-saudi" : ""}`}
+              >
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
             </MenuItem>
@@ -94,7 +97,9 @@ export default function TabLayout() {
     <Text
       className={
         (language === "ar" ? "text-xl" : "text-2xl") +
-        (pressed ? " font-saudi-bold" : " font-saudi")
+        (pressed
+          ? ` ${language === "ar" ? "font-saudi-bold" : "font-bold"}`
+          : ` ${language === "ar" ? "font-saudi" : ""}`)
       }
       style={{ color: color }}
     >
