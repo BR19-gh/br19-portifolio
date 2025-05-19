@@ -1,5 +1,6 @@
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
 import { useLocalization } from "@/contexts/LocalizationContext";
 import { useLocaleAlignment } from "@/hooks";
 import { TextDirection } from "@/hooks/useLocaleAlignment";
@@ -59,10 +60,7 @@ export default function Home() {
               className="font-handjet-bold text-primary-400 mt-0.5"
             >
               <Typewriter
-                words={[
-                  i18n.t("home.position1") + " ",
-                  i18n.t("home.position2") + " ",
-                ]}
+                words={[i18n.t("home.position1"), i18n.t("home.position2")]}
                 loop={false}
                 cursor
                 cursorStyle="|"
@@ -75,14 +73,14 @@ export default function Home() {
           <Button
             size="xl"
             action="primary"
-            className="w-40 gap-3 rounded-lg"
+            className="w-40 gap-3 rounded-lg  hover:text-white "
             onPress={() => {
               router.navigate(`/(tabs)/aboutMe`);
             }}
           >
-            <ButtonText className="font-saudi text-white">
+            <Text size="xl" className="font-saudi text-white hover:text-white">
               {i18n.t("home.aboutMe")}
-            </ButtonText>
+            </Text>
             <ButtonIcon
               as={
                 language === "ar"
