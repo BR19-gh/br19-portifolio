@@ -51,7 +51,7 @@ export default function AboutMe() {
       <Head>
         <title>{i18n.t("tab.aboutMe")} | BR19.me</title>
       </Head>
-      <HStack className="gap-2 mt-10">
+      <HStack className="gap-2 mt-6">
         <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("aboutMe.title")}
