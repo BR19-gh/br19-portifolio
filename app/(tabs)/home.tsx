@@ -24,6 +24,7 @@ import { AccountButton } from "@/components/tab";
 import { ACCOUNTS } from "@/constants";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
+import Head from "expo-router/head";
 
 const CustomHeading = (props: any) => (
   <Heading {...props} className={`font-saudi ${props.className || ""}`}>
@@ -43,6 +44,9 @@ export default function Home() {
         direction: textDir as TextDirection,
       }}
     >
+      <Head>
+        <title>{i18n.t("tab.home")} | BR19.me</title>
+      </Head>
       <XStack className={isPC ? "gap-48" : "gap-20"}>
         <VStack className={isPhone || isTablet ? "gap-3" : "gap-4"}>
           <CustomHeading size="5xl">{i18n.t("home.header")}</CustomHeading>
@@ -78,7 +82,7 @@ export default function Home() {
               router.navigate(`/(tabs)/aboutMe`);
             }}
           >
-            <Text size="xl" className="font-saudi text-white hover:text-white">
+            <Text size="2xl" className="font-saudi text-white hover:text-white">
               {i18n.t("home.aboutMe")}
             </Text>
             <ButtonIcon

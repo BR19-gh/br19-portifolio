@@ -111,7 +111,7 @@ function DrawerTabs(
 
               <MenuItemLabel
                 size="sm"
-                className={`${language === "ar" ? "font-saudi" : ""}`}
+                className={`${language === "ar" && "font-saudi"}`}
               >
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
@@ -144,16 +144,16 @@ function DrawerTabs(
             "text-4xl " +
             (pressed
               ? `${language === "ar" ? "font-saudi-bold" : "font-bold"}`
-              : `${language === "ar" ? "font-saudi" : ""}`)
+              : `${language === "ar" && "font-saudi"}`)
           }
-          style={{ color: themedTextColor() }}
+          style={{ color: themedTextColor(true) }}
         >
           {i18n.t(text)}
         </ButtonText>
         <ButtonIcon
           as={icon}
           className="w-12 h-12"
-          style={{ color: themedTextColor() }}
+          style={{ color: themedTextColor(true) }}
         />
       </Button>
     );
@@ -175,7 +175,11 @@ function DrawerTabs(
           setShowDrawer(true); // Open the drawer
         }}
       >
-        <Icon as={MenuIcon} size="xl" style={{ color: themedTextColor() }} />
+        <Icon
+          as={MenuIcon}
+          size="xl"
+          style={{ color: themedTextColor(true) }}
+        />
       </Button>
       <Drawer
         isOpen={showDrawer}
@@ -193,7 +197,7 @@ function DrawerTabs(
           >
             <Heading
               size="2xl"
-              className={language === "ar" ? "font-saudi" : ""}
+              className={`${language === "ar" && "font-saudi"}`}
             >
               {i18n.t("tab.navigateTo")}
             </Heading>
@@ -260,7 +264,11 @@ function DrawerTabs(
               className="flex-1 rounded-xl h-14"
               size="xl"
             >
-              <Icon className="w-12 h-12" as={X} color={themedTextColor()} />
+              <Icon
+                className="w-12 h-12"
+                as={X}
+                color={themedTextColor(true)}
+              />
             </Button>
           </DrawerFooter>
         </DrawerContent>
