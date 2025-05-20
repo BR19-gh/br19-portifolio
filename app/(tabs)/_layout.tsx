@@ -1,6 +1,6 @@
 import React from "react";
 import { Tabs, TabList, TabTrigger, TabSlot } from "expo-router/ui";
-import { Text } from "react-native";
+import { Text } from "@/components/ui/text";
 import { useLocaleAlignment } from "@/hooks";
 import {
   Languages,
@@ -30,7 +30,7 @@ export default function TabLayout() {
   const dir = useLocaleAlignment("dir", language);
   const reverseFlex = useLocaleAlignment("reverseFlex", language);
   const { colorScheme, themedTextColor } = useThemeCustom();
-  const isDark = colorScheme === "dark";
+
   const pathname = usePathname();
   const { isPhone } = useWindowWidth();
 
@@ -74,7 +74,7 @@ export default function TabLayout() {
 
               <MenuItemLabel
                 size="sm"
-                className={`${language === "ar" ? "font-saudi" : ""}`}
+                className={`${language === "ar" && "font-saudi"}`}
               >
                 {i18n.t(`locale.${lang}`)}
               </MenuItemLabel>
@@ -95,13 +95,9 @@ export default function TabLayout() {
     pressed?: boolean;
   }) => (
     <Text
-      className={
-        (language === "ar" ? "text-xl" : "text-2xl") +
-        (pressed
-          ? ` ${language === "ar" ? "font-saudi-bold" : "font-bold"}`
-          : ` ${language === "ar" ? "font-saudi" : ""}`)
-      }
+      size="xl"
       style={{ color: color }}
+      className={`${language === "ar" && "font-saudi text-2xl"}`}
     >
       {text}
     </Text>
@@ -110,21 +106,12 @@ export default function TabLayout() {
   return (
     <Tabs>
       <TabList
-        style={{
-          padding: ms(7),
-          flexDirection: dir as FlexDirection,
-          justifyContent: "flex-start",
-          alignItems: "center",
-          backgroundColor: isDark
-            ? "rgba(18, 18, 18, 0.4)"
-            : "rgba(255, 255, 255, 0.15)",
-          borderTopWidth: s(1),
-          borderTopColor: isDark
-            ? "rgba(255, 255, 255, 0.1)"
-            : "rgba(0, 0, 0, 0.05)",
-          backdropFilter: "blur(20px)",
-          gap: ms(20),
-        }}
+        style={
+          tabStyles.container(
+            colorScheme,
+            dir
+          ) as import("react-native").ViewStyle
+        }
       >
         <Logo />
 
@@ -133,14 +120,10 @@ export default function TabLayout() {
           <TabTrigger
             name="home"
             href="/home"
-            style={tabStyles.tabText(
-              pathname === "/home",
-              isPhone,
-              themedTextColor()
-            )}
+            style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor()}
+              color={themedTextColor(pathname === "/home")}
               text={i18n.t("tab.home")}
               pressed={pathname === "/home"}
             />
@@ -148,14 +131,10 @@ export default function TabLayout() {
           <TabTrigger
             name="aboutMe"
             href="/(tabs)/aboutMe"
-            style={tabStyles.tabText(
-              pathname === "/aboutMe",
-              isPhone,
-              themedTextColor()
-            )}
+            style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor()}
+              color={themedTextColor(pathname === "/aboutMe")}
               text={i18n.t("tab.aboutMe")}
               pressed={pathname === "/aboutMe"}
             />
@@ -163,14 +142,10 @@ export default function TabLayout() {
           <TabTrigger
             name="projects"
             href="/(tabs)/projects"
-            style={tabStyles.tabText(
-              pathname === "/projects",
-              isPhone,
-              themedTextColor()
-            )}
+            style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor()}
+              color={themedTextColor(pathname === "/projects")}
               text={i18n.t("tab.projects")}
               pressed={pathname === "/projects"}
             />
@@ -178,14 +153,10 @@ export default function TabLayout() {
           <TabTrigger
             name="stats"
             href="/(tabs)/stats"
-            style={tabStyles.tabText(
-              pathname === "/stats",
-              isPhone,
-              themedTextColor()
-            )}
+            style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor()}
+              color={themedTextColor(pathname === "/stats")}
               text={i18n.t("tab.stats")}
               pressed={pathname === "/stats"}
             />
@@ -193,14 +164,10 @@ export default function TabLayout() {
           <TabTrigger
             name="resume"
             href="/(tabs)/resume"
-            style={tabStyles.tabText(
-              pathname === "/resume",
-              isPhone,
-              themedTextColor()
-            )}
+            style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor()}
+              color={themedTextColor(pathname === "/resume")}
               text={i18n.t("tab.resume")}
               pressed={pathname === "/resume"}
             />

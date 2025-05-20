@@ -15,7 +15,7 @@ type Theme = "light" | "dark" | "system";
 interface ThemeContextType {
   colorScheme: Theme;
   toggleColorScheme: () => void;
-  themedTextColor: () => string;
+  themedTextColor: (pressed?: boolean) => string;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -46,9 +46,18 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
     await saveItem(THEME_STORAGE_KEY, newTheme);
   }, [colorScheme]);
 
-  const themedTextColor = useCallback(() => {
-    return colorScheme === "dark" ? "#FFFFFF" : "#000000";
-  }, [colorScheme]);
+  const themedTextColor = useCallback(
+    (pressed?: boolean) => {
+      return colorScheme === "dark"
+        ? pressed
+          ? "#FFFFFF"
+          : "#AAAAAA"
+        : pressed
+        ? "#000000"
+        : "#555555";
+    },
+    [colorScheme]
+  );
 
   return (
     <ThemeContext.Provider
