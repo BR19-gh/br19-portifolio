@@ -40,7 +40,6 @@ const CompatableWebView = ({ source }: { source: string }) => {
           className="w-[95%] h-[95%] bg-transparent absolute rounded-md"
           style={{
             zIndex: 1,
-
             transform: "translateZ(60px)",
           }}
         />
@@ -84,7 +83,7 @@ export default function Resume() {
   const CustomText = (props: any) => (
     <Text
       {...props}
-      className={`${language === "ar" ? "font-saudi" : ""} ${
+      className={`${language === "ar" ? "font-saudi text-2xl" : "text-lg"} ${
         props.className || ""
       }`}
     >
@@ -102,7 +101,7 @@ export default function Resume() {
       <Head>
         <title>{i18n.t("tab.resume")} | BR19.me</title>
       </Head>
-      <HStack className="gap-2 mt-10 items-center justify-center w-screen">
+      <HStack className="gap-2 mt-6 items-center justify-center w-screen">
         <Icon as={FileText} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("resume.title")}
@@ -124,16 +123,12 @@ export default function Resume() {
           onPress={() => {
             Linking.openURL(ResumePDF);
           }}
+          className="w-40 self-center items-center"
           action="primary"
         >
-          <CustomText className={"text-white"}>
+          <CustomText className="text-white">
             {i18n.t("resume.openResume")}
           </CustomText>
-          <ButtonIcon
-            as={FileText}
-            className="w-6 h-6"
-            style={{ color: "white" }}
-          />
         </Button>
       </VStack>
     </Center>
