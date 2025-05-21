@@ -9,7 +9,7 @@ export default function Home() {
       <Head>
         <title>{i18n.t("tab.projects")} | BR19.me</title>
       </Head>
-      <Heading className="text-lg mt-2">..</Heading>
+      <Heading className="text-lg mt-2">Projects</Heading>
     </Center>
   );
 }
