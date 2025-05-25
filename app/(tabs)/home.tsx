@@ -13,54 +13,62 @@ import { Image } from "react-native";
 import { HStack } from "@/components/ui/hstack";
 import { VStack } from "@/components/ui/vstack";
 import { XStack } from "@/components/common";
-import { s, vs } from "react-native-size-matters";
-import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
+import { Button, ButtonIcon } from "@/components/ui/button";
 import {
   LucideArrowLeftCircle,
   LucideArrowRightCircle,
 } from "lucide-react-native";
-import { router } from "expo-router";
-import { AccountButton } from "@/components/tab";
+import { AccountButton } from "@/components/home/account-button";
 import { ACCOUNTS } from "@/constants";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import Head from "expo-router/head";
-
-const CustomHeading = (props: any) => (
-  <Heading {...props} className={`font-saudi ${props.className || ""}`}>
-    {props.children}
-  </Heading>
-);
+import styles from "@/app/(tabs)/styles";
+import { useNavigationContext } from "@/contexts/NavigationContext";
 
 export default function Home() {
   const { language } = useLocalization();
   const { isPC, isPhone, isTablet } = useWindowWidth();
   const textDir = useLocaleAlignment("textDir", language);
+  const { handleNavigate } = useNavigationContext();
+
+  const CustomHeading = (props: any) => (
+    <Heading {...props} className={`font-saudi ${props.className || ""}`}>
+      {props.children}
+    </Heading>
+  );
+
+  const CustomText = (props: any) => (
+    <Text
+      {...props}
+      className={`${language === "ar" ? "font-saudi text-2xl" : "text-md"} ${
+        props.className || ""
+      }`}
+    >
+      {props.children}
+    </Text>
+  );
+
   return (
     <Center
       className={isPC ? "scale-125" : "scale-100"}
-      style={{
-        marginTop: isPC ? 150 : 20,
-        direction: textDir as TextDirection,
-      }}
+      style={styles.homeContainer(isPC, textDir as TextDirection)}
     >
       <Head>
         <title>{i18n.t("tab.home")} | BR19.me</title>
       </Head>
       <XStack className={isPC ? "gap-48" : "gap-20"}>
         <VStack className={isPhone || isTablet ? "gap-3" : "gap-4"}>
-          <CustomHeading size="5xl">{i18n.t("home.header")}</CustomHeading>
+          <CustomHeading size="5xl" className="mt-6">
+            {i18n.t("home.header")}
+          </CustomHeading>
           <CustomHeading size="3xl">{i18n.t("home.title")}</CustomHeading>
           <HStack className="gap-2">
             <CustomHeading size="xl">{i18n.t("home.subtitle")}</CustomHeading>
             <Heading
               id="typewriter"
               size="lg"
-              style={{
-                direction: textDir as TextDirection,
-                fontWeight: 100,
-                letterSpacing: 1,
-              }}
+              style={styles.headingStyle(textDir as TextDirection)}
               className="font-handjet-bold text-primary-400 mt-0.5"
             >
               <Typewriter
@@ -79,12 +87,12 @@ export default function Home() {
             action="primary"
             className="w-40 gap-3 rounded-lg  hover:text-white "
             onPress={() => {
-              router.navigate(`/(tabs)/aboutMe`);
+              handleNavigate(`/(tabs)/aboutMe`);
             }}
           >
-            <Text size="2xl" className="font-saudi text-white hover:text-white">
+            <CustomText className="text-white">
               {i18n.t("home.aboutMe")}
-            </Text>
+            </CustomText>
             <ButtonIcon
               as={
                 language === "ar"
@@ -109,19 +117,9 @@ export default function Home() {
             "flex h-72 w-72 content-center items-center justify-center rounded-xl bg-gradient-to-r from-primary-800 to-primary-400" +
             (isPhone ? " mt-16" : "")
           }
-          style={{
-            boxShadow: "0 48px 60px 0 rgba(2,14,26,.24)",
-            transformStyle: "preserve-3d",
-          }}
+          style={styles.tiltStyle}
         >
-          <Image
-            source={Sticker}
-            style={{
-              width: 280,
-              height: 280,
-              transform: "translateZ(60px)",
-            }}
-          />
+          <Image source={Sticker} style={styles.tiltImageStyle} />
         </Tilt>
       </XStack>
     </Center>

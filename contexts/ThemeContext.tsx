@@ -54,7 +54,7 @@ export const ThemeProviderCustom = ({ children }: { children: ReactNode }) => {
           : "#AAAAAA"
         : pressed
         ? "#000000"
-        : "#555555";
+        : "#777777";
     },
     [colorScheme]
   );
