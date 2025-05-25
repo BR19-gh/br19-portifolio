@@ -11,8 +11,7 @@ import { FlexAlignment, FlexDirection } from "@/hooks/useLocaleAlignment";
 import { useThemeCustom } from "@/contexts/ThemeContext";
 import { usePathname } from "expo-router";
 import i18n from "@/localization";
-import tabStyles from "@/app/(tabs)/tab.styles";
-import { s, ms } from "react-native-size-matters";
+import tabStyles from "@/app/(tabs)/styles";
 import { HStack } from "@/components/ui/hstack";
 import { ChangeTheme } from "@/components/tab/change-theme";
 import { DrawerTabs } from "@/components/tab/drawer-tabs";
@@ -24,6 +23,7 @@ import { Icon } from "@/components/ui/icon";
 import { CheckCircle, Globe, MinusCircle } from "lucide-react-native";
 import CountryFlag from "react-native-country-flag";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
+import styles from "@/app/(tabs)/styles";
 
 export default function TabLayout() {
   const { language, setLanguage } = useLocalization(); // استخدام context لاختيار اللغة
@@ -85,15 +85,7 @@ export default function TabLayout() {
     );
   };
 
-  const TabText = ({
-    color,
-    text,
-    pressed,
-  }: {
-    color: string;
-    text: string;
-    pressed?: boolean;
-  }) => (
+  const TabText = ({ color, text }: { color: string; text: string }) => (
     <Text
       size="xl"
       style={{ color: color }}
@@ -109,7 +101,7 @@ export default function TabLayout() {
         style={
           tabStyles.container(
             colorScheme,
-            dir
+            dir as FlexDirection
           ) as import("react-native").ViewStyle
         }
       >
@@ -125,7 +117,6 @@ export default function TabLayout() {
             <TabText
               color={themedTextColor(pathname === "/home")}
               text={i18n.t("tab.home")}
-              pressed={pathname === "/home"}
             />
           </TabTrigger>
           <TabTrigger
@@ -136,7 +127,6 @@ export default function TabLayout() {
             <TabText
               color={themedTextColor(pathname === "/aboutMe")}
               text={i18n.t("tab.aboutMe")}
-              pressed={pathname === "/aboutMe"}
             />
           </TabTrigger>
           <TabTrigger
@@ -147,7 +137,6 @@ export default function TabLayout() {
             <TabText
               color={themedTextColor(pathname === "/projects")}
               text={i18n.t("tab.projects")}
-              pressed={pathname === "/projects"}
             />
           </TabTrigger>
           <TabTrigger
@@ -158,7 +147,6 @@ export default function TabLayout() {
             <TabText
               color={themedTextColor(pathname === "/stats")}
               text={i18n.t("tab.stats")}
-              pressed={pathname === "/stats"}
             />
           </TabTrigger>
           <TabTrigger
@@ -169,24 +157,19 @@ export default function TabLayout() {
             <TabText
               color={themedTextColor(pathname === "/resume")}
               text={i18n.t("tab.resume")}
-              pressed={pathname === "/resume"}
             />
           </TabTrigger>
           <HStack
-            style={{
-              display: isPhone ? "none" : "flex",
-              width: "100%",
-              justifyContent: reverseFlex as FlexAlignment,
-              padding: ms(5),
-            }}
+            style={tabStyles.optionsContainer(
+              isPhone,
+              reverseFlex as FlexAlignment
+            )}
           >
             <HStack
-              style={{
-                display: isPhone ? "none" : "flex",
-                flexDirection: dir as FlexDirection,
-                gap: ms(45),
-                alignItems: "center",
-              }}
+              style={styles.optionsInnerContainer(
+                isPhone,
+                dir as FlexDirection
+              )}
             >
               <ChangeLanguage />
               <ChangeTheme />

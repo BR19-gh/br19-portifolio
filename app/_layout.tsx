@@ -15,8 +15,8 @@ import { getLocales } from "expo-localization";
 import { LocalizationProvider } from "@/contexts/LocalizationContext";
 import { ImageBackground } from "react-native";
 import { Stack } from "expo-router";
-import { BackgroundDark, BackgroundLight } from "@/assets/images";
 import { WindowWidthProvider } from "@/contexts/WindowWidthContext";
+import { NavigationProvider } from "@/contexts/NavigationContext";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -81,25 +81,43 @@ export const unstable_settings = {
 };
 
 function InnerLayout() {
+  document.body.style.overflow = "auto";
   const { colorScheme } = useThemeCustom();
+  useEffect(() => {
+    if (typeof document !== "undefined" && document.body) {
+      if (colorScheme === "dark") {
+        console.log("Dark mode enabled");
+        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.jpg)`;
+      } else {
+        console.log("Light mode enabled");
+        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.jpg)`;
+      }
+    }
+  }, [colorScheme]);
 
   return (
     <GluestackUIProvider mode={colorScheme === "dark" ? "dark" : "light"}>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <ImageBackground
-          source={colorScheme === "dark" ? BackgroundDark : BackgroundLight}
           imageStyle={{
             resizeMode: "cover",
             position: "absolute",
-            width: "100%",
-            height: 1300,
+            width: window.innerWidth,
+            height: window.innerHeight,
           }}
         >
           <LocalizationProvider>
             <WindowWidthProvider>
-              <Stack>
-                <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-              </Stack>
+              <NavigationProvider>
+                <Stack>
+                  <Stack.Screen
+                    name="(tabs)"
+                    options={{
+                      headerShown: false,
+                    }}
+                  />
+                </Stack>
+              </NavigationProvider>
             </WindowWidthProvider>
           </LocalizationProvider>
         </ImageBackground>

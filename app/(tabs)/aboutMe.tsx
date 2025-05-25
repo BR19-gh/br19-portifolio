@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
+import { Button, ButtonIcon } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
@@ -10,15 +10,19 @@ import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import { useLocaleAlignment } from "@/hooks";
 import { TextDirection } from "@/hooks/useLocaleAlignment";
 import i18n from "@/localization";
-import { router } from "expo-router";
 import Head from "expo-router/head";
 import { Code2Icon, FileText, User } from "lucide-react-native";
 import { Linking, TouchableOpacity } from "react-native";
 import { Typewriter } from "react-simple-typewriter";
+import styles from "@/app/(tabs)/styles";
+import { useNavigationContext } from "@/contexts/NavigationContext";
 
 export default function AboutMe() {
   const { language } = useLocalization();
   const textDir = useLocaleAlignment("textDir", language);
+  const { isPhone } = useWindowWidth();
+  const { handleNavigate } = useNavigationContext();
+
   const CustomHeading = (props: any) => (
     <Heading
       {...props}
@@ -41,12 +45,10 @@ export default function AboutMe() {
     </Text>
   );
 
-  const { isPC, isPhone, isTablet } = useWindowWidth();
-
   return (
     <Center
       className="flex-1 gap-10 px-40"
-      style={{ direction: textDir as TextDirection }}
+      style={styles.aboutMeContainer(textDir as TextDirection)}
     >
       <Head>
         <title>{i18n.t("tab.aboutMe")} | BR19.me</title>
@@ -64,11 +66,7 @@ export default function AboutMe() {
             <Heading
               id="typewriter"
               size="md"
-              style={{
-                direction: textDir as TextDirection,
-                fontWeight: 100,
-                letterSpacing: 1,
-              }}
+              style={styles.headingStyle(textDir as TextDirection)}
               className="font-handjet-bold mt-0.5"
             >
               <Typewriter
@@ -83,7 +81,12 @@ export default function AboutMe() {
             </Heading>
           </HStack>
         </VStack>
-        <Text className="text-justify font-saudi-bold">
+        <Text
+          className={
+            "text-justify " +
+            (language === "ar" ? "font-saudi-bold" : "font-bold")
+          }
+        >
           {i18n.t("aboutMe.body")}
         </Text>
         <VStack className="gap-4">
@@ -124,7 +127,7 @@ export default function AboutMe() {
               action="primary"
               size="lg"
               onPress={() => {
-                router.navigate(`/(tabs)/resume`);
+                handleNavigate(`/(tabs)/resume`);
               }}
             >
               <Text
@@ -141,7 +144,7 @@ export default function AboutMe() {
               action="primary"
               size="lg"
               onPress={() => {
-                router.navigate(`/(tabs)/projects`);
+                handleNavigate(`/(tabs)/projects`);
               }}
             >
               <Text

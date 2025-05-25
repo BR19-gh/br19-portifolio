@@ -14,9 +14,8 @@ import {
   DrawerFooter,
 } from "@/components/ui/drawer";
 import { Heading } from "@/components/ui/heading";
-import { View, ViewProps, Text } from "react-native";
+import { View, ViewProps } from "react-native";
 import { HStack } from "@/components/ui/hstack";
-import { useRouter } from "expo-router"; // Import useRouter
 import { useThemeCustom } from "@/contexts/ThemeContext";
 import useLocaleAlignment, { FlexDirection } from "@/hooks/useLocaleAlignment";
 import {
@@ -34,8 +33,7 @@ import {
   House,
   FileText,
   BarChart,
-  Code,
-  LucideIcon,
+  Code2Icon,
   Globe,
   X,
   MenuIcon,
@@ -44,6 +42,7 @@ import {
   MinusCircle,
 } from "lucide-react-native";
 import { NavigateButtonProps } from "./drawer-tabs.types";
+import { useNavigationContext } from "@/contexts/NavigationContext";
 
 function DrawerTabs(
   props: React.JSX.IntrinsicAttributes &
@@ -55,23 +54,7 @@ function DrawerTabs(
   const dir = useLocaleAlignment("dir", language);
   const reverseDir = useLocaleAlignment("reverseDir", language);
   const { themedTextColor } = useThemeCustom();
-  const router = useRouter();
-  const [activeRoute, setActiveRoute] = React.useState<string | null>(
-    "/(tabs)/home"
-  );
-
-  const handleNavigate = (
-    route:
-      | "/(tabs)/home"
-      | "/(tabs)/aboutMe"
-      | "/(tabs)/projects"
-      | "/(tabs)/stats"
-      | "/(tabs)/resume"
-  ) => {
-    setActiveRoute(route);
-    router.push(route);
-    setShowDrawer(false); // Close the drawer after navigation
-  };
+  const { activeRoute, handleNavigate } = useNavigationContext();
 
   const ChangeLanguage: React.FC<{
     size?: "sm" | "md" | "lg" | "xl" | "2xs" | "xs";
@@ -131,7 +114,12 @@ function DrawerTabs(
 
     return (
       <Button
-        onPress={() => handleNavigate(route)}
+        onPress={() => {
+          handleNavigate(route);
+          setTimeout(() => {
+            setShowDrawer(false);
+          }, 0);
+        }}
         className="w-full h-32 flex-wrap items-center rounded-xl p-3 justify-around"
         style={{
           flexDirection: dir as FlexDirection,
@@ -228,7 +216,7 @@ function DrawerTabs(
               />
               <NavigateButton
                 text="tab.projects"
-                icon={Code}
+                icon={Code2Icon}
                 route="/(tabs)/projects"
               />
               <NavigateButton
