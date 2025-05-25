@@ -42,5 +42,9 @@
     "title": "Resume",
     "openResume": "Open Resume",
     "loadingPDF": "Loading PDF..."
+  },
+  "projects": {
+    "title": "My Projects",
+    "visitProject": "Visit Project"
   }
 }

@@ -1,15 +1,123 @@
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
+import { Text } from "@/components/ui/text";
+import { HStack } from "@/components/ui/hstack";
+import { useLocalization } from "@/contexts/LocalizationContext";
+import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import i18n from "@/localization";
 import Head from "expo-router/head";
+import { Icon } from "@/components/ui/icon";
+import { Code2Icon } from "lucide-react-native";
+import { Card } from "@/components/ui/card";
+import PROJECTS from "@/constants/Projects";
+import { VStack } from "@/components/ui/vstack";
+import { Tilt } from "@jdion/tilt-react";
+import { Badge, BadgeText } from "@/components/ui/badge";
+import { Image } from "@/components/ui/image";
+import { FlatList, Linking, View } from "react-native";
+import { Button } from "@/components/ui/button";
+import styles from "./styles";
 
 export default function Home() {
+  const { isPhone, isTablet } = useWindowWidth();
+  const { language } = useLocalization();
+
+  const CustomHeading = (props: any) => (
+    <Heading
+      {...props}
+      className={`${language === "ar" ? "font-saudi" : ""} ${
+        props.className || ""
+      }`}
+    >
+      {props.children}
+    </Heading>
+  );
+
+  const CustomText = (props: any) => (
+    <Text
+      {...props}
+      className={`${language === "ar" ? "font-saudi" : ""} ${
+        props.className || ""
+      }`}
+    >
+      {props.children}
+    </Text>
+  );
+
   return (
-    <Center className="flex-1">
-      <Head>
-        <title>{i18n.t("tab.projects")} | BR19.me</title>
-      </Head>
-      <Heading className="text-lg mt-2">..</Heading>
+    <Center>
+      <HStack className="gap-2 mt-6">
+        <Head>
+          <title>{i18n.t("tab.projects")} | BR19.me</title>
+        </Head>
+        <CustomHeading size={isPhone ? "3xl" : "4xl"}>
+          {i18n.t("projects.title")}
+        </CustomHeading>
+        <Icon as={Code2Icon} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+      </HStack>
+
+      <FlatList
+        className={isPhone ? "p-0" : "p-5"}
+        contentContainerClassName="items-center"
+        horizontal={false}
+        numColumns={isPhone ? 1 : isTablet ? 2 : 3}
+        key={`flatlist-numColumns-${isPhone ? 1 : isTablet ? 2 : 3}`}
+        data={PROJECTS}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => (
+          <Tilt>
+            <Card
+              style={styles.tiltStyle}
+              key={item.id}
+              size="md"
+              variant="filled"
+              className={
+                "w-[440px] h-96 " +
+                (isPhone ? "scale-[0.8]" : isTablet ? "scale-[0.9]" : "m-5")
+              }
+            >
+              <VStack space="lg" className="items-center">
+                <View className="bg-primary-500 rounded-lg">
+                  <Image
+                    className="rounded-lg h-[150px] w-[400px]"
+                    size="full"
+                    source={
+                      item.githubImg +
+                      "&title_color=ffffff&text_color=ffffff&icon_color=ffffff"
+                    }
+                    alt={item.githubURL}
+                  />
+                </View>
+                <Heading size="xl">{item.title}</Heading>
+                <CustomText size="md">
+                  {language === "ar"
+                    ? item.shortDescriptionAr
+                    : item.shortDescription}
+                </CustomText>
+                <HStack space="sm" className="flex-wrap justify-center">
+                  {item.skills.map((skill, index) => (
+                    <Badge key={index} size="sm" variant="solid" action="info">
+                      <BadgeText>{skill}</BadgeText>
+                    </Badge>
+                  ))}
+                </HStack>
+                <Button
+                  size="sm"
+                  action="primary"
+                  className="w-32"
+                  onPress={() => {
+                    Linking.openURL(item.githubURL);
+                  }}
+                >
+                  <CustomText size="md" className={"text-white"}>
+                    {i18n.t("projects.visitProject")}
+                  </CustomText>
+                </Button>
+              </VStack>
+            </Card>
+          </Tilt>
+        )}
+      />
     </Center>
   );
 }
