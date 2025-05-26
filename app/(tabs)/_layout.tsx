@@ -58,7 +58,6 @@ export default function TabLayout() {
               onPress={() => {
                 const newLanguage: Languages = lang;
                 setLanguage(newLanguage);
-                console.log("language", newLanguage);
               }}
               key={lang}
             >

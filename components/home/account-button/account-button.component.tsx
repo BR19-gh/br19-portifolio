@@ -1,4 +1,4 @@
-import { Button, ButtonIcon } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Alert, Linking } from "react-native";
 

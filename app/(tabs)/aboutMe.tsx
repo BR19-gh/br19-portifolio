@@ -51,16 +51,16 @@ export default function AboutMe() {
       style={styles.aboutMeContainer(textDir as TextDirection)}
     >
       <Head>
-        <title>{i18n.t("tab.aboutMe")} | BR19.me</title>
+        <title>{i18n.t("head.aboutMe")} | BR19.me</title>
       </Head>
-      <HStack className="gap-2 mt-6">
+      <HStack space="lg" className="m-6">
         <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("aboutMe.title")}
         </CustomHeading>
       </HStack>
-      <VStack className="gap-6">
-        <VStack className="gap-2">
+      <VStack space="xl">
+        <VStack space="sm">
           <CustomHeading size="2xl">{i18n.t("aboutMe.name")}</CustomHeading>
           <HStack>
             <Heading
@@ -89,7 +89,7 @@ export default function AboutMe() {
         >
           {i18n.t("aboutMe.body")}
         </Text>
-        <VStack className="gap-4">
+        <VStack space="lg">
           <VStack>
             <TouchableOpacity
               onPress={() => {
@@ -122,7 +122,7 @@ export default function AboutMe() {
               </CustomText>
             </HStack>
           </VStack>
-          <HStack className="gap-4">
+          <HStack space="lg">
             <Button
               action="primary"
               size="lg"

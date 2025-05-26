@@ -86,10 +86,8 @@ function InnerLayout() {
   useEffect(() => {
     if (typeof document !== "undefined" && document.body) {
       if (colorScheme === "dark") {
-        console.log("Dark mode enabled");
         document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.jpg)`;
       } else {
-        console.log("Light mode enabled");
         document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.jpg)`;
       }
     }
