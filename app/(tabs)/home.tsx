@@ -55,15 +55,15 @@ export default function Home() {
       style={styles.homeContainer(isPC, textDir as TextDirection)}
     >
       <Head>
-        <title>{i18n.t("tab.home")} | BR19.me</title>
+        <title>{i18n.t("head.home")} | BR19.me</title>
       </Head>
       <XStack className={isPC ? "gap-48" : "gap-20"}>
-        <VStack className={isPhone || isTablet ? "gap-3" : "gap-4"}>
+        <VStack space={isPhone || isTablet ? "md" : "lg"}>
           <CustomHeading size="5xl" className="mt-6">
             {i18n.t("home.header")}
           </CustomHeading>
           <CustomHeading size="3xl">{i18n.t("home.title")}</CustomHeading>
-          <HStack className="gap-2">
+          <HStack space="sm">
             <CustomHeading size="xl">{i18n.t("home.subtitle")}</CustomHeading>
             <Heading
               id="typewriter"
@@ -102,7 +102,7 @@ export default function Home() {
               color={"white"}
             />
           </Button>
-          <HStack className="gap-3">
+          <HStack space="md">
             {ACCOUNTS.map((account) => (
               <AccountButton
                 key={account.name}

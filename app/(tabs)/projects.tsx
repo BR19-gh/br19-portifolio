@@ -46,9 +46,9 @@ export default function Home() {
 
   return (
     <Center>
-      <HStack className="gap-2 mt-6">
+      <HStack space="sm" className="mt-6">
         <Head>
-          <title>{i18n.t("tab.projects")} | BR19.me</title>
+          <title>{i18n.t("head.projects")} | BR19.me</title>
         </Head>
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("projects.title")}

@@ -1,4 +1,4 @@
-import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
@@ -17,6 +17,8 @@ import Head from "expo-router/head";
 import { WebView } from "react-native-webview";
 import React from "react";
 import { ResumePDF } from "@/assets/images";
+import { Card } from "@/components/ui/card";
+import styles from "@/app/(tabs)/styles";
 
 const CompatableWebView = ({ source }: { source: string }) => {
   const [pdfUrl, setPdfUrl] = React.useState<string | null>(null);
@@ -37,7 +39,7 @@ const CompatableWebView = ({ source }: { source: string }) => {
     return (
       <>
         <View
-          className="w-[95%] h-[95%] bg-transparent absolute rounded-md"
+          className="w-[98%] h-[98%] bg-transparent absolute rounded-lg"
           style={{
             zIndex: 1,
             transform: "translateZ(60px)",
@@ -45,7 +47,7 @@ const CompatableWebView = ({ source }: { source: string }) => {
         />
         <iframe
           src={pdfUrl}
-          className="w-[90%] h-[90%] rounded-md"
+          className="w-[98%] h-[98%] rounded-lg"
           style={{
             transform: "translateZ(60px)",
           }}
@@ -68,6 +70,7 @@ const CompatableWebView = ({ source }: { source: string }) => {
 export default function Resume() {
   const { language } = useLocalization();
   const textDir = useLocaleAlignment("textDir", language);
+  const { isPhone } = useWindowWidth();
 
   const CustomHeading = (props: any) => (
     <Heading
@@ -91,33 +94,30 @@ export default function Resume() {
     </Text>
   );
 
-  const { isPC, isPhone, isTablet } = useWindowWidth();
-
   return (
     <Center
       className="flex-1 gap-10 px-40"
       style={{ direction: textDir as TextDirection }}
     >
       <Head>
-        <title>{i18n.t("tab.resume")} | BR19.me</title>
+        <title>{i18n.t("head.resume")} | BR19.me</title>
       </Head>
-      <HStack className="gap-2 mt-6 items-center justify-center w-screen">
+      <HStack space="lg" className="mt-6 items-center justify-center w-screen">
         <Icon as={FileText} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("resume.title")}
         </CustomHeading>
       </HStack>
-      <VStack className="gap-12">
-        <Tilt
-          className={
-            "flex h-[438.5] w-[310] content-center items-center justify-center rounded-xl bg-gradient-to-r from-primary-800 to-primary-400"
-          }
-          style={{
-            boxShadow: "0 48px 60px 0 rgba(2,14,26,.24)",
-            transformStyle: "preserve-3d",
-          }}
-        >
-          <CompatableWebView source={ResumePDF} />
+      <VStack space="lg">
+        <Tilt>
+          <Card
+            size="sm"
+            variant="elevated"
+            className="h-[438.5] w-[310] flex content-center items-center justify-center rounded-lg"
+            style={styles.tiltStyle}
+          >
+            <CompatableWebView source={ResumePDF} />
+          </Card>
         </Tilt>
         <Button
           onPress={() => {

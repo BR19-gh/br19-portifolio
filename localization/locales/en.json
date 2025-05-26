@@ -18,6 +18,13 @@
     "stats": "Stats",
     "resume": "Resume"
   },
+  "head": {
+    "home": "Home",
+    "aboutMe": "About Me",
+    "projects": "Projects",
+    "stats": "Stats",
+    "resume": "Resume"
+  },
   "home": {
     "position1": "Fullstack Developer",
     "position2": "Mobile Developer",
@@ -46,5 +53,8 @@
   "projects": {
     "title": "My Projects",
     "visitProject": "Visit Project"
+  },
+  "stats": {
+    "title": "Stats"
   }
 }
