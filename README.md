@@ -32,7 +32,7 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
    npx expo start --web
    ```
 
-2. Open your browser and visit [http://localhost:5173](http://localhost:5173) to use the Employee Polls Web App.
+2. Open your browser and visit [http://localhost:8081](http://localhost:8081) to use the Employee Polls Web App.
 
 ## Folder Structure
 
@@ -48,7 +48,8 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
 ## Sample Screenshots
 
 ### Home Page
-![Home Page](./public/readmeImg.png)
+
+![Home Page](./assets/github_image.png)
 
 <hr>
 <div id="header" align="center">
@@ -66,7 +67,7 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
   </a>
     <img src="https://komarev.com/ghpvc/?username=BR19-gh&style=for-the-badge&color=red" alt=""/>
 </div>
-</div> 
+</div>
 
 <br>
 
