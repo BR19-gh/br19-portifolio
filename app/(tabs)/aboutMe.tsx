@@ -1,4 +1,4 @@
-import { Button, ButtonIcon } from "@/components/ui/button";
+import { Button, ButtonIcon, ButtonText } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
@@ -130,14 +130,13 @@ export default function AboutMe() {
                 handleNavigate(`/(tabs)/resume`);
               }}
             >
-              <Text
-                size="2xl"
+              <ButtonText
                 className={`${
                   language === "ar" ? "font-saudi" : ""
-                } text-white `}
+                } text-white hover:text-white `}
               >
                 {i18n.t("aboutMe.resume")}
-              </Text>
+              </ButtonText>
               <ButtonIcon size="xl" as={FileText} color="white" />
             </Button>
             <Button
@@ -147,14 +146,13 @@ export default function AboutMe() {
                 handleNavigate(`/(tabs)/projects`);
               }}
             >
-              <Text
-                size="2xl"
+              <ButtonText
                 className={`${
                   language === "ar" ? "font-saudi" : ""
-                } text-white `}
+                } text-white hover:text-white`}
               >
                 {i18n.t("aboutMe.projects")}
-              </Text>
+              </ButtonText>
               <ButtonIcon size="xl" as={Code2Icon} color="white" />
             </Button>
           </HStack>

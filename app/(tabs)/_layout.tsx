@@ -26,13 +26,15 @@ import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import styles from "@/app/(tabs)/styles";
 
 export default function TabLayout() {
-  const { language, setLanguage } = useLocalization(); // استخدام context لاختيار اللغة
+  const { language, setLanguage, isLoading } = useLocalization();
   const dir = useLocaleAlignment("dir", language);
   const reverseFlex = useLocaleAlignment("reverseFlex", language);
   const { colorScheme, themedTextColor } = useThemeCustom();
 
   const pathname = usePathname();
   const { isPhone } = useWindowWidth();
+
+  if (isLoading) return null;
 
   const ChangeLanguage: React.FC<{
     size?: "sm" | "md" | "lg" | "xl" | "2xs" | "xs";
@@ -114,7 +116,7 @@ export default function TabLayout() {
             style={tabStyles.tabText(isPhone)}
           >
             <TabText
-              color={themedTextColor(pathname === "/home")}
+              color={themedTextColor(pathname === "/home" || pathname === "/")}
               text={i18n.t("tab.home")}
             />
           </TabTrigger>
