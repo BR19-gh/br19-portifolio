@@ -9,7 +9,8 @@
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.br19.portfolio"
     },
     "android": {
       "adaptiveIcon": {
@@ -23,9 +24,7 @@
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
-      [
-        "expo-localization"
-      ],
+      ["expo-localization"],
       "expo-router",
       [
         "expo-splash-screen",

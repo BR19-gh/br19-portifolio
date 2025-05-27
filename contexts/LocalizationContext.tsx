@@ -24,6 +24,7 @@ export const SupportedLanguages = Object.values(LanguagesEnum) as string[];
 interface LocalizationContextType {
   language: Languages;
   setLanguage: (lang: Languages) => void;
+  isLoading: boolean;
 }
 
 const LocalizationContext = createContext<LocalizationContextType | undefined>(
@@ -32,33 +33,37 @@ const LocalizationContext = createContext<LocalizationContextType | undefined>(
 
 export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguageState] = useState<Languages>("en");
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true); // <-- changed from false to true
 
   useEffect(() => {
     const loadLanguage = async () => {
       const storedLanguage = await getItem(LANGUAGE_STORAGE_KEY);
+      let finalLang: Languages = "en";
+
       if (
         storedLanguage &&
         SupportedLanguages.includes(storedLanguage as Languages)
       ) {
-        setLanguageState(storedLanguage as Languages);
-        i18n.locale = storedLanguage as Languages;
+        finalLang = storedLanguage as Languages;
       } else {
         const defaultLocale = getLocales()[0]?.languageCode as Languages;
-        const initialLang = SupportedLanguages.includes(defaultLocale)
-          ? defaultLocale
-          : "en";
-        setLanguageState(initialLang);
-        i18n.locale = initialLang;
+        if (SupportedLanguages.includes(defaultLocale)) {
+          finalLang = defaultLocale;
+        }
       }
+
+      i18n.locale = finalLang; // ✅ set locale first
+      setLanguageState(finalLang); // then update state
+      setIsLoading(false);
     };
+
     loadLanguage();
   }, []);
 
   const setLanguage = async (lang: Languages) => {
     setIsLoading(true);
+    i18n.locale = lang; // ✅ apply immediately
     setLanguageState(lang);
-    i18n.locale = lang;
     await saveItem(LANGUAGE_STORAGE_KEY, lang);
     setTimeout(() => {
       setIsLoading(false);
@@ -66,7 +71,7 @@ export const LocalizationProvider = ({ children }: { children: ReactNode }) => {
   };
 
   return (
-    <LocalizationContext.Provider value={{ language, setLanguage }}>
+    <LocalizationContext.Provider value={{ language, setLanguage, isLoading }}>
       {isLoading ? (
         <Center className="flex-1 justify-center items-center">
           <ClipLoader

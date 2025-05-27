@@ -55,6 +55,12 @@
     "visitProject": "Visit Project"
   },
   "stats": {
-    "title": "Stats"
+    "title": "Stats",
+    "linkSuffix": "&locale=en"
+  },
+  "404": {
+    "title": "Page Not Found",
+    "subtitle": "The page you are looking for does not exist",
+    "goHome": "Go Back to Home"
   }
 }

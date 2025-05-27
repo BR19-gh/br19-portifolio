@@ -60,8 +60,8 @@ export default function Home() {
         className={isPhone ? "p-0" : "p-5"}
         contentContainerClassName="items-center"
         horizontal={false}
-        numColumns={isPhone ? 1 : isTablet ? 2 : 3}
-        key={`flatlist-numColumns-${isPhone ? 1 : isTablet ? 2 : 3}`}
+        numColumns={isPhone ? 1 : 2}
+        key={`flatlist-numColumns-${isPhone ? 1 : 2}`}
         data={PROJECTS}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
