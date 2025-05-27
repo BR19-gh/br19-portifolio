@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is my updated Portfolio, created using React Native Web, Expo, Nativewind, GlueStack and several npm packages, you can use its templates for personal purposes only.
+This is my updated Portfolio, created using React Native Web, Expo, Nativewind, gluestack-ui and several npm packages, you can use its templates for personal purposes only.
 
 ## Installation
 
