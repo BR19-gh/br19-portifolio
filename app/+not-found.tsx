@@ -1,4 +1,4 @@
-import { Link, router, Stack, Tabs, usePathname } from "expo-router";
+import { router, Stack, usePathname } from "expo-router";
 
 import { Text } from "@/components/ui/text";
 import i18n from "@/localization";
@@ -18,27 +18,16 @@ import {
   useLocalization,
 } from "@/contexts/LocalizationContext";
 import { Pressable } from "@/components/ui/pressable";
-import {
-  AnimatedWrapper,
-  ChangeTheme,
-  DrawerTabs,
-  Logo,
-} from "@/components/tab";
-import { ms, s, vs } from "react-native-size-matters";
-import useLocaleAlignment, {
-  FlexAlignment,
-  FlexDirection,
-} from "@/hooks/useLocaleAlignment";
+import { AnimatedWrapper, ChangeTheme } from "@/components/tab";
+import { ms, vs } from "react-native-size-matters";
+import useLocaleAlignment, { FlexDirection } from "@/hooks/useLocaleAlignment";
 import React from "react";
-import tabStyles from "@/app/(tabs)/styles";
-import { useWindowWidth } from "@/contexts/WindowWidthContext";
+import Head from "expo-router/head";
 
 export default function NotFoundScreen() {
-  const { colorScheme, themedTextColor } = useThemeCustom();
+  const { colorScheme } = useThemeCustom();
   const { language, setLanguage, isLoading } = useLocalization();
   const dir = useLocaleAlignment("dir", language);
-  const { isPhone } = useWindowWidth();
-  const reverseFlex = useLocaleAlignment("reverseFlex", language);
 
   const pathname = usePathname();
 
@@ -119,6 +108,7 @@ export default function NotFoundScreen() {
 
   return (
     <>
+      <Head>404 | BR19.me</Head>
       <Stack.Screen
         options={{
           title: i18n.t("404.goHome"),
