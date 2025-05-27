@@ -1,36 +1,83 @@
-# Welcome to your Expo app 👋
+# My portfolio
 
-This is an [Expo](https://expo.dev) project created with [`create-gluestack-app`](https://www.npmjs.com/package/create-gluestack).
+## Overview
 
-## Get started
+This is my updated Portfolio, created using React Native Web, Expo, Nativewind, GlueStack and several npm packages, you can use its templates for personal purposes only.
 
-1. Start the app
+## Installation
+
+1. Clone the repository to your local machine:
 
    ```bash
-    npm run start
+   git clone https://github.com/BR19-gh/br19-portifolio.git
    ```
 
-In the output, you'll find options to open the app in a
+2. Navigate to the project directory:
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+   ```bash
+   cd br19-portifolio
+   ```
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+3. Install dependencies:
 
-## Learn more
+   ```bash
+   npm install
+   ```
 
-To learn more about developing your project with Expo, look at the following resources:
+## Usage
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-- [Nativewind](https://www.nativewind.dev/): Nativewind is a utility-first library for building native apps with Tailwind CSS.
-- [Gluestack](https://gluestack.io/): Gluestack is a component library for building native apps with Tailwind CSS.
+1. Start the development server:
 
-## Join the community
+   ```bash
+   npx expo start --web
+   ```
 
-Join our community of developers creating universal apps.
+2. Open your browser and visit [http://localhost:5173](http://localhost:5173) to use the Employee Polls Web App.
 
-- [gluestack-ui on GitHub](https://github.com/gluestack/gluestack-ui): View our open source ui library and contribute.
-- [gluestack community](https://discord.com/channels/1050761204852858900/1336392784168484914): Chat with gluestack users and ask questions.
+## Folder Structure
+
+- `app`: The web app views
+- `app/(tabs)`: The web app screens
+- `components`: Contains React components
+- `constants`: Web app constants
+- `contexts`: Web app contexts
+- `hooks`: Web app custom hooks
+- `assets`: Public assets
+- `services`: Web app external services
+
+## Sample Screenshots
+
+### Home Page
+![Home Page](./public/readmeImg.png)
+
+<hr>
+<div id="header" align="center">
+  <img align="center" src="https://github.com/BR19-gh/BR19-gh/blob/master/FullSizeRender.gif" alt=""/>
+  <br><br>
+  <div id="badges">
+  <a href="https://br19.me">
+    <img src="https://img.shields.io/badge/Portfolio-navy?style=for-the-badge&logo=website&logoColor=white" alt="Portfolio Badge"/>
+  </a>
+    <a href="https://www.linkedin.com/in/ibrahim-alkhowaiter-430b24203/">
+    <img src="https://img.shields.io/badge/LinkedIn-blue?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn Badge"/>
+  </a>
+  <a href="https://stackoverflow.com/users/16627404/br19-so">
+    <img src="https://img.shields.io/badge/Stackoverflow-orange?style=for-the-badge&logo=stackoverflow&logoColor=white" alt="Stackoverflow Badge"/>
+  </a>
+    <img src="https://komarev.com/ghpvc/?username=BR19-gh&style=for-the-badge&color=red" alt=""/>
+</div>
+</div> 
+
+<br>
+
+## About me 🔎:
+
+- My Name is Ibrahim Alkhowaiter 🏷️👤.
+
+- FullStack and Mobile Apps Developer 💻🌐.
+
+- FullStack and Software Developer 💻🌐.
+
+- Live in Unaizah - Riyadh, KSA 🌴🇸🇦.
+
+<div>
