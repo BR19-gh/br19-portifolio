@@ -60,7 +60,11 @@ export default function AboutMe() {
         <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
       </HStack>
 
-      <VStack space="lg" className={"px-36"}>
+      <VStack
+        space="lg"
+        className={"px-36"}
+        style={styles.aboutMeContainer(textDir as TextDirection)}
+      >
         <VStack space="sm">
           <CustomHeading size="2xl">{i18n.t("aboutMe.name")}</CustomHeading>
           <HStack>
