@@ -28,7 +28,7 @@ import { useNavigationContext } from "@/contexts/NavigationContext";
 
 export default function Home() {
   const { language } = useLocalization();
-  const { isPC, isPhone, isTablet } = useWindowWidth();
+  const { isPC, isPhone } = useWindowWidth();
   const textDir = useLocaleAlignment("textDir", language);
   const { handleNavigate } = useNavigationContext();
 

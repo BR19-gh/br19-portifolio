@@ -9,7 +9,7 @@ interface CardStatProps {
   className?: string;
 }
 
-const StatCard: React.FC<CardStatProps> = ({ link, className }) => {
+const StatCard: React.FC<CardStatProps> = ({ link }) => {
   return (
     <Tilt
       className={`justify-items-center items-center w-[${CARDS_SIZE["CARD_WIDTH"]}px] h-[${CARDS_SIZE["CARD_HEIGHT"]}px]`}
