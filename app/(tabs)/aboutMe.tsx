@@ -47,9 +47,6 @@ export default function AboutMe() {
 
   return (
     <Center className="gap-10">
-      <Head>
-        <title>{i18n.t("head.aboutMe")} | BR19.me</title>
-      </Head>
       <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
         <Head>
           <title>{i18n.t("head.aboutMe")} | BR19.me</title>
@@ -111,7 +108,7 @@ export default function AboutMe() {
                 >
                   {i18n.t("aboutMe.emailTitle") + ":  "}
                 </Text>
-                <Text>Ibrahim-abdalaziz@hotmail.com</Text>
+                <CustomText>Ibrahim-abdalaziz@hotmail.com</CustomText>
               </HStack>
             </TouchableOpacity>
             <HStack>

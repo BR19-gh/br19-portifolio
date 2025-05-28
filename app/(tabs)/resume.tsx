@@ -9,7 +9,6 @@ import { useLocalization } from "@/contexts/LocalizationContext";
 import { Tilt } from "@jdion/tilt-react";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import { useLocaleAlignment } from "@/hooks";
-import { TextDirection } from "@/hooks/useLocaleAlignment";
 import i18n from "@/localization";
 import { Linking, Platform, View } from "react-native";
 import { FileText } from "lucide-react-native";
@@ -95,10 +94,7 @@ export default function Resume() {
   );
 
   return (
-    <Center
-      className="flex-1 gap-10 px-40"
-      style={{ direction: textDir as TextDirection }}
-    >
+    <Center>
       <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
         <Head>
           <title>{i18n.t("head.resume")} | BR19.me</title>
