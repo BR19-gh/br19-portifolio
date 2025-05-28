@@ -158,7 +158,7 @@ function DrawerTabs(
     >
       <Button
         action="secondary"
-        size="lg"
+        size="sm"
         onPress={() => {
           setShowDrawer(true); // Open the drawer
         }}

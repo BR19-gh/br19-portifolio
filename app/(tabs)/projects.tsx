@@ -46,7 +46,7 @@ export default function Home() {
 
   return (
     <Center>
-      <HStack space="sm" className="mt-6">
+      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
         <Head>
           <title>{i18n.t("head.projects")} | BR19.me</title>
         </Head>
@@ -60,6 +60,9 @@ export default function Home() {
         className={isPhone ? "p-0" : "p-5"}
         contentContainerClassName="items-center"
         horizontal={false}
+        ItemSeparatorComponent={() => (
+          <View className={isPhone ? "-mt-10" : "mt-5"} />
+        )}
         numColumns={isPhone ? 1 : 2}
         key={`flatlist-numColumns-${isPhone ? 1 : 2}`}
         data={PROJECTS}
@@ -72,18 +75,18 @@ export default function Home() {
               size="md"
               variant="filled"
               className={
-                "w-[440px] h-96 " +
+                "w-[370] h-96 rounded-xl " +
                 (isPhone ? "scale-[0.8]" : isTablet ? "scale-[0.9]" : "m-5")
               }
             >
               <VStack space="lg" className="items-center">
                 <View className="bg-primary-500 rounded-lg">
                   <Image
-                    className="rounded-lg h-[150px] w-[400px]"
+                    className="rounded-lg h-[125px] w-[340px]"
                     size="full"
                     source={
                       item.githubImg +
-                      "&title_color=ffffff&text_color=ffffff&icon_color=ffffff"
+                      "&title_color=ffffff&text_color=ffffff&icon_color=ffffff&card_width=300&card_height=150"
                     }
                     alt={item.githubURL}
                   />

@@ -28,7 +28,7 @@ import { useNavigationContext } from "@/contexts/NavigationContext";
 
 export default function Home() {
   const { language } = useLocalization();
-  const { isPC, isPhone, isTablet } = useWindowWidth();
+  const { isPC, isPhone } = useWindowWidth();
   const textDir = useLocaleAlignment("textDir", language);
   const { handleNavigate } = useNavigationContext();
 
@@ -51,15 +51,15 @@ export default function Home() {
 
   return (
     <Center
-      className={isPC ? "scale-125" : "scale-100"}
+      className={isPhone ? "scale-90" : "scale-100"}
       style={styles.homeContainer(isPC, textDir as TextDirection)}
     >
       <Head>
         <title>{i18n.t("head.home")} | BR19.me</title>
       </Head>
-      <XStack className={isPC ? "gap-48" : "gap-20"}>
-        <VStack space={isPhone || isTablet ? "md" : "lg"}>
-          <CustomHeading size="5xl" className="mt-6">
+      <XStack className={isPC ? "gap-48 scale-125" : "gap-20"}>
+        <VStack space={"md"}>
+          <CustomHeading size="5xl" className={isPhone ? "-mt-5" : "mt-1"}>
             {i18n.t("home.header")}
           </CustomHeading>
           <CustomHeading size="3xl">{i18n.t("home.title")}</CustomHeading>
@@ -102,7 +102,7 @@ export default function Home() {
               color={"white"}
             />
           </Button>
-          <HStack space="md">
+          <HStack space="sm">
             {ACCOUNTS.map((account) => (
               <AccountButton
                 key={account.name}
@@ -115,7 +115,7 @@ export default function Home() {
         <Tilt
           className={
             "flex h-72 w-72 content-center items-center justify-center rounded-xl bg-gradient-to-r from-primary-800 to-primary-400" +
-            (isPhone ? " mt-16" : "")
+            (isPhone ? " mt-8" : "")
           }
           style={styles.tiltStyle}
         >

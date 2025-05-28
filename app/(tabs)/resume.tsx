@@ -99,14 +99,14 @@ export default function Resume() {
       className="flex-1 gap-10 px-40"
       style={{ direction: textDir as TextDirection }}
     >
-      <Head>
-        <title>{i18n.t("head.resume")} | BR19.me</title>
-      </Head>
-      <HStack space="lg" className="mt-6 items-center justify-center w-screen">
-        <Icon as={FileText} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
+        <Head>
+          <title>{i18n.t("head.resume")} | BR19.me</title>
+        </Head>
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("resume.title")}
         </CustomHeading>
+        <Icon as={FileText} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
       </HStack>
       <VStack space="lg">
         <Tilt>
