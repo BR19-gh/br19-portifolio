@@ -9,7 +9,6 @@ import { useLocalization } from "@/contexts/LocalizationContext";
 import { Tilt } from "@jdion/tilt-react";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import { useLocaleAlignment } from "@/hooks";
-import { TextDirection } from "@/hooks/useLocaleAlignment";
 import i18n from "@/localization";
 import { Linking, Platform, View } from "react-native";
 import { FileText } from "lucide-react-native";
