@@ -28,17 +28,23 @@ export default function Home() {
   );
 
   return (
-    <Center className="flex-1">
-      <Head>
-        <title>{i18n.t("head.stats")} | BR19.me</title>
-      </Head>
-      <HStack space="sm" className="m-6">
-        <Icon as={BarChart} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+    <Center>
+      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
+        <Head>
+          <title>{i18n.t("head.stats")} | BR19.me</title>
+        </Head>
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("stats.title")}
         </CustomHeading>
+        <Icon as={BarChart} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
       </HStack>
-      <VStack space="4xl" className="w-full items-center">
+      <VStack
+        space="4xl"
+        className={
+          "w-full items-center self-center " +
+          (isPhone ? "-mt-36 scale-50" : "-mt-24 scale-75")
+        }
+      >
         <StatCard
           link={`https://github-readme-stats.vercel.app/api/top-langs/?langs_count=5&username=BR19-gh&theme=transparent&layout=donut&hide=html,css&hide_border=true&card_width=${CARDS_SIZE["CARD_WIDTH"]}&card_height=${CARDS_SIZE["CARD_HEIGHT"]}`}
         />

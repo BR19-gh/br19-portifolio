@@ -46,20 +46,21 @@ export default function AboutMe() {
   );
 
   return (
-    <Center
-      className="flex-1 gap-10 px-40"
-      style={styles.aboutMeContainer(textDir as TextDirection)}
-    >
+    <Center className="gap-10">
       <Head>
         <title>{i18n.t("head.aboutMe")} | BR19.me</title>
       </Head>
-      <HStack space="lg" className="m-6">
-        <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
+        <Head>
+          <title>{i18n.t("head.aboutMe")} | BR19.me</title>
+        </Head>
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("aboutMe.title")}
         </CustomHeading>
+        <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
       </HStack>
-      <VStack space="xl">
+
+      <VStack space="lg" className={"px-36"}>
         <VStack space="sm">
           <CustomHeading size="2xl">{i18n.t("aboutMe.name")}</CustomHeading>
           <HStack>
@@ -82,6 +83,7 @@ export default function AboutMe() {
           </HStack>
         </VStack>
         <Text
+          size={isPhone ? "sm" : "md"}
           className={
             "text-justify " +
             (language === "ar" ? "font-saudi-bold" : "font-bold")
@@ -98,7 +100,7 @@ export default function AboutMe() {
             >
               <HStack>
                 <Text
-                  size="lg"
+                  size="md"
                   className={`${
                     language === "ar" ? "font-saudi-bold" : "font-bold"
                   } text-primary-700`}
@@ -110,16 +112,14 @@ export default function AboutMe() {
             </TouchableOpacity>
             <HStack>
               <Text
-                size="lg"
+                size="md"
                 className={`${
                   language === "ar" ? "font-saudi-bold" : "font-bold"
                 } text-primary-700`}
               >
                 {i18n.t("aboutMe.locationTitle") + ":  "}
               </Text>
-              <CustomText size="lg">
-                {i18n.t("aboutMe.locationValue")}
-              </CustomText>
+              <CustomText>{i18n.t("aboutMe.locationValue")}</CustomText>
             </HStack>
           </VStack>
           <HStack space="lg">
@@ -130,13 +130,14 @@ export default function AboutMe() {
                 handleNavigate(`/(tabs)/resume`);
               }}
             >
-              <ButtonText
+              <CustomText
+                size="lg"
                 className={`${
                   language === "ar" ? "font-saudi" : ""
-                } text-white hover:text-white `}
+                } text-white`}
               >
                 {i18n.t("aboutMe.resume")}
-              </ButtonText>
+              </CustomText>
               <ButtonIcon size="xl" as={FileText} color="white" />
             </Button>
             <Button
@@ -146,13 +147,14 @@ export default function AboutMe() {
                 handleNavigate(`/(tabs)/projects`);
               }}
             >
-              <ButtonText
+              <CustomText
+                size="lg"
                 className={`${
                   language === "ar" ? "font-saudi" : ""
-                } text-white hover:text-white`}
+                } text-white`}
               >
                 {i18n.t("aboutMe.projects")}
-              </ButtonText>
+              </CustomText>
               <ButtonIcon size="xl" as={Code2Icon} color="white" />
             </Button>
           </HStack>

@@ -6,14 +6,15 @@ import i18n from "@/localization";
 
 interface CardStatProps {
   link: string;
+  className?: string;
 }
 
-const StatCard: React.FC<CardStatProps> = ({ link }) => {
+const StatCard: React.FC<CardStatProps> = ({ link, className }) => {
   return (
     <Tilt
       className={`justify-items-center items-center w-[${CARDS_SIZE["CARD_WIDTH"]}px] h-[${CARDS_SIZE["CARD_HEIGHT"]}px]`}
     >
-      <Card className="w-[87%] h-[110%]" variant="filled" size="lg">
+      <Card className="w-[500px] h-[250px]" variant="filled" size="lg">
         <Image
           size="full"
           source={{
