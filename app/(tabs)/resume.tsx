@@ -8,7 +8,6 @@ import { VStack } from "@/components/ui/vstack";
 import { useLocalization } from "@/contexts/LocalizationContext";
 import { Tilt } from "@jdion/tilt-react";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
-import { useLocaleAlignment } from "@/hooks";
 import i18n from "@/localization";
 import { Linking, Platform, View } from "react-native";
 import { FileText } from "lucide-react-native";
@@ -68,7 +67,6 @@ const CompatableWebView = ({ source }: { source: string }) => {
 
 export default function Resume() {
   const { language } = useLocalization();
-  const textDir = useLocaleAlignment("textDir", language);
   const { isPhone } = useWindowWidth();
 
   const CustomHeading = (props: any) => (
