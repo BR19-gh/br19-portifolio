@@ -3,7 +3,7 @@ import {
   FlexDirection,
   TextDirection,
 } from "@/hooks/useLocaleAlignment";
-import { ms, s } from "react-native-size-matters";
+import { ms } from "react-native-size-matters";
 
 type Display = "flex" | "none" | undefined;
 
@@ -22,7 +22,6 @@ const styles = {
       colorScheme === "dark"
         ? "rgba(18, 18, 18, 0.4)"
         : "rgba(255, 255, 255, 0.15)",
-    borderTopWidth: s(1),
     borderTopColor:
       colorScheme === "dark"
         ? "rgba(255, 255, 255, 0.1)"

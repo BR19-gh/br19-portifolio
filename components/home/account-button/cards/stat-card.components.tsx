@@ -11,9 +11,7 @@ interface CardStatProps {
 
 const StatCard: React.FC<CardStatProps> = ({ link }) => {
   return (
-    <Tilt
-      className={`justify-items-center items-center w-[${CARDS_SIZE["CARD_WIDTH"]}px] h-[${CARDS_SIZE["CARD_HEIGHT"]}px]`}
-    >
+    <Tilt className={`justify-items-center items-center`}>
       <Card className="w-[500px] h-[250px]" variant="filled" size="lg">
         <Image
           size="full"

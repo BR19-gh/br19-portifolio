@@ -41,8 +41,8 @@ export default function Home() {
       <VStack
         space="4xl"
         className={
-          "w-full items-center self-center " +
-          (isPhone ? "-mt-36 scale-50" : "-mt-24 scale-75")
+          "w-full h-full items-center " +
+          (isPhone ? "-mt-36 scale-[0.5]" : "-mt-28 scale-[0.65]")
         }
       >
         <StatCard

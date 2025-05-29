@@ -92,7 +92,7 @@ export default function Resume() {
   );
 
   return (
-    <Center>
+    <Center className="gap-10">
       <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
         <Head>
           <title>{i18n.t("head.resume")} | BR19.me</title>

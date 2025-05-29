@@ -72,27 +72,27 @@ export default function Home() {
             <Card
               style={styles.tiltStyle}
               key={item.id}
-              size="md"
+              size="lg"
               variant="filled"
               className={
-                "w-[370] h-96 rounded-xl " +
+                "w-[370px] rounded-xl " +
                 (isPhone ? "scale-[0.8]" : isTablet ? "scale-[0.9]" : "m-5")
               }
             >
               <VStack space="lg" className="items-center">
                 <View className="bg-primary-500 rounded-lg">
                   <Image
-                    className="rounded-lg h-[125px] w-[340px]"
+                    className="rounded-lg h-[135px] w-[340px]"
                     size="full"
                     source={
                       item.githubImg +
-                      "&title_color=ffffff&text_color=ffffff&icon_color=ffffff&card_width=300&card_height=150"
+                      "&title_color=ffffff&text_color=ffffff&icon_color=ffffff"
                     }
                     alt={item.githubURL}
                   />
                 </View>
                 <Heading size="xl">{item.title}</Heading>
-                <CustomText size="md">
+                <CustomText size="md" className="text-justify px-4">
                   {language === "ar"
                     ? item.shortDescriptionAr
                     : item.shortDescription}
@@ -105,14 +105,14 @@ export default function Home() {
                   ))}
                 </HStack>
                 <Button
-                  size="sm"
+                  size="xl"
                   action="primary"
-                  className="w-32"
+                  className="w-44"
                   onPress={() => {
                     Linking.openURL(item.githubURL);
                   }}
                 >
-                  <CustomText size="md" className={"text-white"}>
+                  <CustomText size="xl" className={"text-white"}>
                     {i18n.t("projects.visitProject")}
                   </CustomText>
                 </Button>
