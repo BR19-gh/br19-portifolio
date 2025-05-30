@@ -32,7 +32,7 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
    npx expo start --web
    ```
 
-2. Open your browser and visit [http://localhost:8081](http://localhost:8081) to use the Employee Polls Web App.
+2. Open your browser and visit [http://localhost:8081](http://localhost:8081) to use the Web App.
 
 ## Folder Structure
 
