@@ -77,8 +77,6 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
 
 - FullStack and Mobile Apps Developer 💻🌐.
 
-- FullStack and Software Developer 💻🌐.
-
 - Live in Unaizah - Riyadh, KSA 🌴🇸🇦.
 
 <div>
