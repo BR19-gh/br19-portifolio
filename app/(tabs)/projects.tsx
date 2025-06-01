@@ -36,6 +36,9 @@ export default function Home() {
   const CustomText = (props: any) => (
     <Text
       {...props}
+      style={{
+        direction: language === "ar" ? "rtl" : "ltr",
+      }}
       className={`${language === "ar" ? "font-saudi" : ""} ${
         props.className || ""
       }`}

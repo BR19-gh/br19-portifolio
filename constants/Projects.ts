@@ -5,7 +5,7 @@ const PROJECTS = [
     shortDescription:
       "iOS, iPadOS, MacOS app that gathers tools for your daily calcuations",
     shortDescriptionAr:
-      "يجمع أدوات بسيطة لحساباتك اليومية iOS ،iPadOS ،MacOS تطبيق",
+      "تطبيق iOS ،iPadOS ،MacOS يجمع أدوات بسيطة لحساباتك اليومية",
     githubURL: "https://github.com/BR19-gh/QuickCalc",
     githubImg:
       "https://github-readme-stats.vercel.app/api/pin/?username=BR19-gh&repo=QuickCalc&show_icons=true&theme=transparent&hide_border=true",
