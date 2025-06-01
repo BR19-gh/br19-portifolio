@@ -2,8 +2,10 @@ const PROJECTS = [
   {
     id: "1",
     title: "QuickCalc",
-    shortDescription: "iOS app that gathers tools for your daily calcuations",
-    shortDescriptionAr: "يجمع أدوات بسيطة لحساباتك اليومية iOS تطبيق",
+    shortDescription:
+      "iOS, iPadOS, MacOS app that gathers tools for your daily calcuations",
+    shortDescriptionAr:
+      "يجمع أدوات بسيطة لحساباتك اليومية iOS ،iPadOS ،MacOS تطبيق",
     githubURL: "https://github.com/BR19-gh/QuickCalc",
     githubImg:
       "https://github-readme-stats.vercel.app/api/pin/?username=BR19-gh&repo=QuickCalc&show_icons=true&theme=transparent&hide_border=true",
@@ -12,7 +14,7 @@ const PROJECTS = [
       "Expo",
       "Redux",
       "iOS Development",
-      "Tailwind",
+      "Nativewind",
       "Javascript",
       "NPM Packages",
     ],
@@ -22,7 +24,7 @@ const PROJECTS = [
   {
     id: "5",
     title: "br19-portifolio",
-    shortDescription: "This portfolio website.",
+    shortDescription: "This portfolio website",
     shortDescriptionAr: "هذا الموقع الشخصي",
     githubURL: "https://github.com/BR19-gh/br19-portifolio",
     githubImg:
@@ -32,7 +34,7 @@ const PROJECTS = [
       "TypeScript",
       "Expo",
       "GlueStack-UI",
-      "CSS",
+      "Nativewind",
       "expo-router",
       "npm",
       "netlify",
@@ -43,7 +45,7 @@ const PROJECTS = [
   {
     id: "6",
     title: "Employee Polls",
-    shortDescription: "Participate and create polls.",
+    shortDescription: "Participate and create polls",
     shortDescriptionAr: "مشاركة وإنشاء استطلاعات",
     githubURL: "https://github.com/BR19-gh/employeePolls-Udacity",
     githubImg:
@@ -85,7 +87,7 @@ const PROJECTS = [
   {
     id: "3",
     title: "RSD",
-    shortDescription: "Record students degrees management system.",
+    shortDescription: "Record students degrees management system",
     shortDescriptionAr: "نظام لإدارة درجات الطلاب",
     githubURL: "https://github.com/BR19-gh/rsd",
     githubImg:
@@ -107,7 +109,7 @@ const PROJECTS = [
   {
     id: "4",
     title: "Runman",
-    shortDescription: "Side-scrolling pixel game.",
+    shortDescription: "Side-scrolling pixel game",
     shortDescriptionAr: "لعبة منصات برسوم بكسلية",
     githubURL: "https://github.com/BR19-gh/Runman",
     githubImg:
@@ -129,8 +131,8 @@ const PROJECTS = [
   {
     id: "7",
     title: "Github",
-    shortDescription: "More in Github.",
-    shortDescriptionAr: "Github المزيد على.",
+    shortDescription: "Find more in Github",
+    shortDescriptionAr: "للمزيد من المشاريع Github زوروا",
     githubURL: "https://github.com/BR19-gh",
     githubImg:
       "https://github-readme-stats.vercel.app/api/pin/?username=BR19-gh&repo=BR19-gh&show_icons=true&theme=transparent&hide_border=true",

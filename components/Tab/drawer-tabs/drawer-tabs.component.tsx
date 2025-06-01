@@ -240,7 +240,6 @@ function DrawerTabs(
               paddingBottom: 10,
               paddingHorizontal: 20,
               overflowX: "hidden",
-
               backdropFilter: "blur(16px)",
             }}
             className="flex-row items-center justify-around rounded-t-xl"

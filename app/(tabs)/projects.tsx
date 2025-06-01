@@ -46,7 +46,11 @@ export default function Home() {
 
   return (
     <Center>
-      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
+      <HStack
+        space="sm"
+        reversed={language === "ar"}
+        className={isPhone ? "m-1" : "m-6"}
+      >
         <Head>
           <title>{i18n.t("head.projects")} | BR19.me</title>
         </Head>

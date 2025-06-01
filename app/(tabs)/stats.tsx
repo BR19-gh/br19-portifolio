@@ -29,7 +29,11 @@ export default function Home() {
 
   return (
     <Center>
-      <HStack space="sm" className={isPhone ? "m-1" : "m-6"}>
+      <HStack
+        space="sm"
+        reversed={language === "ar"}
+        className={isPhone ? "m-1" : "m-6"}
+      >
         <Head>
           <title>{i18n.t("head.stats")} | BR19.me</title>
         </Head>
@@ -42,7 +46,7 @@ export default function Home() {
         space="4xl"
         className={
           "w-full h-full items-center " +
-          (isPhone ? "-mt-36 scale-[0.5]" : "-mt-28 scale-[0.65]")
+          (isPhone ? "-mt-28 scale-[0.6]" : "-mt-28 scale-[0.65]")
         }
       >
         <StatCard

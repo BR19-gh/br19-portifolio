@@ -14,6 +14,9 @@ const styles = {
     display: isWindowWidthSmall ? ("none" as Display) : ("flex" as Display),
   }),
   container: (colorScheme: string, dir: FlexDirection) => ({
+    position: "fixed",
+    zIndex: 3,
+    width: "100%",
     padding: ms(7),
     flexDirection: dir,
     justifyContent: "flex-start",

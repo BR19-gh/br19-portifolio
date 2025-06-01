@@ -33,7 +33,7 @@ const FadeView = ({
   }, [animationKey]);
 
   return (
-    <Animated.View style={[{ opacity }, style]} {...rest}>
+    <Animated.View style={[{ opacity, marginTop: 55 }, style]} {...rest}>
       {children}
     </Animated.View>
   );
