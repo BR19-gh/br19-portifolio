@@ -24,7 +24,6 @@ import { CheckCircle, Globe, MinusCircle } from "lucide-react-native";
 import CountryFlag from "react-native-country-flag";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import styles from "@/app/(tabs)/styles";
-import { s } from "react-native-size-matters";
 
 export default function TabLayout() {
   const { language, setLanguage, isLoading } = useLocalization();
