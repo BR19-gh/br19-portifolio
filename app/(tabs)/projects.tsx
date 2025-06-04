@@ -50,7 +50,7 @@ export default function Home() {
   return (
     <Center>
       <HStack
-        space="sm"
+        space="lg"
         reversed={language === "ar"}
         className={isPhone ? "m-1" : "m-6"}
       >

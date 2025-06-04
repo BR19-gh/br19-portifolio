@@ -48,7 +48,7 @@ export default function AboutMe() {
   return (
     <Center className="gap-10">
       <HStack
-        space="sm"
+        space="lg"
         reversed={language === "ar"}
         className={isPhone ? "m-1" : "m-6"}
       >
@@ -62,11 +62,11 @@ export default function AboutMe() {
       </HStack>
 
       <VStack
-        space="lg"
+        space="md"
         className={"px-36"}
         style={styles.aboutMeContainer(textDir as TextDirection)}
       >
-        <VStack space="sm">
+        <VStack space="xs">
           <CustomHeading size="2xl">{i18n.t("aboutMe.name")}</CustomHeading>
           <HStack>
             <Heading

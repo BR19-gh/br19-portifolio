@@ -160,6 +160,9 @@ function DrawerTabs(
         action="secondary"
         size="sm"
         onPress={() => {
+          if (typeof window !== "undefined") {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
           setShowDrawer(true); // Open the drawer
         }}
       >

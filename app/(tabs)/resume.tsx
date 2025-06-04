@@ -94,7 +94,7 @@ export default function Resume() {
   return (
     <Center className="gap-10">
       <HStack
-        space="sm"
+        space="lg"
         reversed={language === "ar"}
         className={isPhone ? "m-1" : "m-6"}
       >

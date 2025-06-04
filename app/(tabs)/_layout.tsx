@@ -24,6 +24,7 @@ import { CheckCircle, Globe, MinusCircle } from "lucide-react-native";
 import CountryFlag from "react-native-country-flag";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import styles from "@/app/(tabs)/styles";
+import { s } from "react-native-size-matters";
 
 export default function TabLayout() {
   const { language, setLanguage, isLoading } = useLocalization();
@@ -99,12 +100,13 @@ export default function TabLayout() {
   return (
     <Tabs>
       <TabList
-        style={
+        style={[
           tabStyles.container(
             colorScheme,
             dir as FlexDirection
-          ) as import("react-native").ViewStyle
-        }
+          ) as import("react-native").ViewStyle,
+          { position: "fixed", zIndex: 3, width: "100%" },
+        ]}
       >
         <Logo />
 
