@@ -7,7 +7,7 @@ const ACCOUNTS = [
   {
     name: "linkedin",
     icon: "linkedin",
-    link: "https://www.linkedin.com/in/ibrahim-alkhowaiter-430b24203/",
+    link: "https://www.linkedin.com/in/ibrahim-alkhowaiter",
   },
   {
     name: "email",
