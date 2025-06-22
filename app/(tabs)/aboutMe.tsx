@@ -62,8 +62,8 @@ export default function AboutMe() {
       </HStack>
 
       <VStack
-        space="md"
-        className={"px-36"}
+        space="lg"
+        className={"mx-36"}
         style={styles.aboutMeContainer(textDir as TextDirection)}
       >
         <VStack space="xs">
