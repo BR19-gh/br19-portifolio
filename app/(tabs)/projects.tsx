@@ -99,7 +99,7 @@ export default function Home() {
                   />
                 </View>
                 <Heading size="xl">{item.title}</Heading>
-                <CustomText size="md" className="text-justify px-4">
+                <CustomText size="md" className="text-justify mx-4">
                   {language === "ar"
                     ? item.shortDescriptionAr
                     : item.shortDescription}

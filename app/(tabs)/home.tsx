@@ -58,7 +58,7 @@ export default function Home() {
         <title>{i18n.t("head.home")} | BR19.me</title>
       </Head>
       <XStack className={isPC ? "gap-48 scale-125" : "gap-20"}>
-        <VStack space={"md"}>
+        <VStack space={"lg"}>
           <CustomHeading size="5xl" className={isPhone ? "-mt-5" : "mt-1"}>
             {i18n.t("home.header")}
           </CustomHeading>

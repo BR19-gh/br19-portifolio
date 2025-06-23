@@ -132,7 +132,7 @@ const PROJECTS = [
     id: "7",
     title: "Github",
     shortDescription: "Find more in Github",
-    shortDescriptionAr: "للمزيد من المشاريع Github زوروا",
+    shortDescriptionAr: "للمزيد زوروا Github",
     githubURL: "https://github.com/BR19-gh",
     githubImg:
       "https://github-readme-stats.vercel.app/api/pin/?username=BR19-gh&repo=BR19-gh&show_icons=true&theme=transparent&hide_border=true",
