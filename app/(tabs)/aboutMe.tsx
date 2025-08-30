@@ -130,57 +130,57 @@ export default function AboutMe() {
               <CustomText>{i18n.t("aboutMe.locationValue")}</CustomText>
             </HStack>
           </VStack>
-          <HStack space="lg">
+          <HStack space="sm">
             <Button
               action="primary"
-              size="lg"
+              size="sm"
               onPress={() => {
                 handleNavigate(`/(tabs)/resume`);
               }}
             >
               <CustomText
-                size="lg"
+                size="sm"
                 className={`${
                   language === "ar" ? "font-saudi" : ""
                 } text-white`}
               >
                 {i18n.t("aboutMe.resume")}
               </CustomText>
-              <FileText size="20" color="white" />
+              <FileText size="17" color="white" />
             </Button>
             <Button
               action="primary"
-              size="lg"
+              size="sm"
               onPress={() => {
                 handleNavigate(`/(tabs)/experience`);
               }}
             >
               <CustomText
-                size="lg"
+                size="sm"
                 className={`${
                   language === "ar" ? "font-saudi" : ""
                 } text-white`}
               >
                 {i18n.t("aboutMe.experience")}
               </CustomText>
-              <BriefcaseBusiness size="20" color="white" />
+              <BriefcaseBusiness size="17" color="white" />
             </Button>
             <Button
               action="primary"
-              size="lg"
+              size="sm"
               onPress={() => {
                 handleNavigate(`/(tabs)/projects`);
               }}
             >
               <CustomText
-                size="lg"
+                size="sm"
                 className={`${
                   language === "ar" ? "font-saudi" : ""
                 } text-white`}
               >
                 {i18n.t("aboutMe.projects")}
               </CustomText>
-              <Code2Icon size="20" color="white" />
+              <Code2Icon size="17" color="white" />
             </Button>
           </HStack>
         </VStack>
