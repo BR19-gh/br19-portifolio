@@ -40,7 +40,7 @@ export default function Home() {
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("stats.title")}
         </CustomHeading>
-        <Icon as={BarChart} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+        <BarChart size={isPhone ? 44 : 56} />
       </HStack>
       <VStack
         space="4xl"

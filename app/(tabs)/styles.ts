@@ -64,6 +64,7 @@ const styles = {
     fontWeight: "100" as const,
     letterSpacing: 1,
   }),
+
   //   aboutMe
 
   aboutMeContainer: (textDir: TextDirection) => ({ direction: textDir }),

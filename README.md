@@ -75,7 +75,7 @@ This is my updated Portfolio, created using React Native Web, Expo, Nativewind, 
 
 - My Name is Ibrahim Alkhowaiter 🏷️👤.
 
-- FullStack and Mobile Apps Developer 💻🌐.
+- Web and Mobile Apps Developer 💻🌐.
 
 - Live in Unaizah - Riyadh, KSA 🌴🇸🇦.
 

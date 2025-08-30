@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useState } from "react";
 import { useRouter } from "expo-router";
 
-type Route =
+export type Route =
   | "/(tabs)/home"
   | "/(tabs)/aboutMe"
+  | "/(tabs)/experience"
   | "/(tabs)/projects"
   | "/(tabs)/stats"
   | "/(tabs)/resume";
