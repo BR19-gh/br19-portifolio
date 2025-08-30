@@ -6,7 +6,6 @@ import { useLocalization } from "@/contexts/LocalizationContext";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import i18n from "@/localization";
 import Head from "expo-router/head";
-import { Icon } from "@/components/ui/icon";
 import { Code2Icon } from "lucide-react-native";
 import { Card } from "@/components/ui/card";
 import PROJECTS from "@/constants/Projects";
@@ -60,7 +59,7 @@ export default function Home() {
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("projects.title")}
         </CustomHeading>
-        <Icon as={Code2Icon} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+        <Code2Icon size={isPhone ? 44 : 56} />
       </HStack>
 
       <FlatList

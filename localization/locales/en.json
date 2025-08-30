@@ -14,6 +14,7 @@
     "navigateTo": "Navigate to",
     "home": "Home",
     "aboutMe": "About Me",
+    "experience": "Experience",
     "projects": "Projects",
     "stats": "Stats",
     "resume": "Resume"
@@ -21,12 +22,13 @@
   "head": {
     "home": "Home",
     "aboutMe": "About Me",
+    "experience": "Experience",
     "projects": "Projects",
     "stats": "Stats",
     "resume": "Resume"
   },
   "home": {
-    "position1": "Fullstack Developer",
+    "position1": "Web Developer",
     "position2": "Mobile Developer",
     "header": "Hello World!",
     "title": "I'm Ibrahim Alkhowaiter",
@@ -36,14 +38,23 @@
   "aboutMe": {
     "title": "About Me",
     "name": "I'm Ibrahim",
-    "position1": "Fullstack Developer",
+    "position1": "Web Developer",
     "position2": "Mobile Developer",
     "body": "I hold a bachelor’s degree in computer science with a strong background in mobile and full-stack development, specializing in the React ecosystem. Throughout my academic and professional journey, I have earned various certifications and completed industry-relevant courses to expand my skill set and stay updated with the latest technologies. I am passionate about learning new technologies, contributing to innovative projects, and making a meaningful impact in the world of software development.",
     "emailTitle": "Email",
     "locationTitle": "Location",
     "locationValue": "Qassim - Riyadh, Saudi Arabia",
     "resume": "Resume",
-    "projects": "Projects"
+    "projects": "Projects",
+    "experience": "Experience"
+  },
+  "experience": {
+    "title": "Experience",
+    "subtitle": "Jobs I've Worked",
+    "company": "Company",
+    "position": "Position",
+    "duration": "Duration",
+    "description": "Description"
   },
   "resume": {
     "title": "Resume",

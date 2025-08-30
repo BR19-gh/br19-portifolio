@@ -132,6 +132,16 @@ export default function TabLayout() {
             />
           </TabTrigger>
           <TabTrigger
+            name="experience"
+            href="/(tabs)/experience"
+            style={tabStyles.tabText(isPhone)}
+          >
+            <TabText
+              color={themedTextColor(pathname === "/experience")}
+              text={i18n.t("tab.experience")}
+            />
+          </TabTrigger>
+          <TabTrigger
             name="projects"
             href="/(tabs)/projects"
             style={tabStyles.tabText(isPhone)}

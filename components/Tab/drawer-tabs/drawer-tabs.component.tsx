@@ -40,6 +40,7 @@ import {
   User,
   CheckCircle,
   MinusCircle,
+  BriefcaseBusiness,
 } from "lucide-react-native";
 import { NavigateButtonProps } from "./drawer-tabs.types";
 import { useNavigationContext } from "@/contexts/NavigationContext";
@@ -107,7 +108,7 @@ function DrawerTabs(
 
   const NavigateButton: React.FC<NavigateButtonProps> = ({
     text,
-    icon,
+    icon: IconCmp,
     route,
   }) => {
     const pressed = activeRoute === route;
@@ -138,11 +139,7 @@ function DrawerTabs(
         >
           {i18n.t(text)}
         </ButtonText>
-        <ButtonIcon
-          as={icon}
-          className="w-12 h-12"
-          style={{ color: themedTextColor(true) }}
-        />
+        <IconCmp color={themedTextColor(true)} size={48} />
       </Button>
     );
   };
@@ -216,6 +213,11 @@ function DrawerTabs(
                 text="tab.aboutMe"
                 icon={User}
                 route="/(tabs)/aboutMe"
+              />
+              <NavigateButton
+                text="tab.experience"
+                icon={BriefcaseBusiness}
+                route="/(tabs)/experience"
               />
               <NavigateButton
                 text="tab.projects"

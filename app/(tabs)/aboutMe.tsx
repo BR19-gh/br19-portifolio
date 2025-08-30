@@ -2,7 +2,6 @@ import { Button, ButtonIcon } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
-import { Icon } from "@/components/ui/icon";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { useLocalization } from "@/contexts/LocalizationContext";
@@ -11,7 +10,12 @@ import { useLocaleAlignment } from "@/hooks";
 import { TextDirection } from "@/hooks/useLocaleAlignment";
 import i18n from "@/localization";
 import Head from "expo-router/head";
-import { Code2Icon, FileText, User } from "lucide-react-native";
+import {
+  BriefcaseBusiness,
+  Code2Icon,
+  FileText,
+  User,
+} from "lucide-react-native";
 import { Linking, TouchableOpacity } from "react-native";
 import { Typewriter } from "react-simple-typewriter";
 import styles from "@/app/(tabs)/styles";
@@ -58,9 +62,8 @@ export default function AboutMe() {
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("aboutMe.title")}
         </CustomHeading>
-        <Icon as={User} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+        <User size={isPhone ? 44 : 56} />
       </HStack>
-
       <VStack
         space="lg"
         className={"mx-36"}
@@ -143,7 +146,24 @@ export default function AboutMe() {
               >
                 {i18n.t("aboutMe.resume")}
               </CustomText>
-              <ButtonIcon size="xl" as={FileText} color="white" />
+              <FileText size="20" color="white" />
+            </Button>
+            <Button
+              action="primary"
+              size="lg"
+              onPress={() => {
+                handleNavigate(`/(tabs)/experience`);
+              }}
+            >
+              <CustomText
+                size="lg"
+                className={`${
+                  language === "ar" ? "font-saudi" : ""
+                } text-white`}
+              >
+                {i18n.t("aboutMe.experience")}
+              </CustomText>
+              <BriefcaseBusiness size="20" color="white" />
             </Button>
             <Button
               action="primary"
@@ -160,7 +180,7 @@ export default function AboutMe() {
               >
                 {i18n.t("aboutMe.projects")}
               </CustomText>
-              <ButtonIcon size="xl" as={Code2Icon} color="white" />
+              <Code2Icon size="20" color="white" />
             </Button>
           </HStack>
         </VStack>

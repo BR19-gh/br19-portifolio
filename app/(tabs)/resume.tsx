@@ -2,7 +2,6 @@ import { Button } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
-import { Icon } from "@/components/ui/icon";
 import { Text } from "@/components/ui/text";
 import { VStack } from "@/components/ui/vstack";
 import { useLocalization } from "@/contexts/LocalizationContext";
@@ -104,7 +103,7 @@ export default function Resume() {
         <CustomHeading size={isPhone ? "3xl" : "4xl"}>
           {i18n.t("resume.title")}
         </CustomHeading>
-        <Icon as={FileText} className={isPhone ? "w-11 h-11" : "w-14 h-14"} />
+        <FileText size={isPhone ? 44 : 56} />
       </HStack>
       <VStack space="lg">
         <Tilt>
