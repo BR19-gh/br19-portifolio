@@ -16,7 +16,7 @@ const EXPERIENCES_EN: Experience[] = [
     institution: "Alinma",
     location: "Riyadh, Saudi Arabia",
     description:
-      "As part of a team, we developed and integrated a React Native UI library based on Figma designs into the banking app. Developed new features and enhanced existing ones. Collaborated with business, designers, QA, and backend teams.",
+      "Worked on multiple applications within my department serving the bank’s business clients. Developed new features and enhanced existing ones. Collaborated closely with business, design, QA, and backend teams to deliver features efficiently, while ensuring consistency, localization, and accessibility across the applications.",
     startDate: "Feb 2025",
     current: true,
     experienceType: "work",
@@ -87,7 +87,7 @@ export const EXPERIENCES_AR: Experience[] = [
     institution: "بنك الإنماء",
     location: "الرياض، السعودية",
     description:
-      "كجزء من فريق، عملت على تطوير ودمج مكتبة React Native مبنية على تصاميم Figma في تطبيق البنك. وطورت خدمات جديدة وحسّنت خدمات حالية. تعاونت مع فرق الأعمال والمصممين والمختبرين ومبرمجين الواجهة الخلفية (backend).",
+      "كجزء من فريق، عملت على عدة تطبيقات داخل القسم تخدم عملاء الأعمال في البنك. طورت مزايا جديدة وحسّنت مزايا قائمة. تعاونت بشكل وثيق مع فرق الأعمال والمصممين وضمان الجودة وفرق الواجهة الخلفية لتسليم المزايا بكفاءة. كما حرصت على الاتساق ودعم تعدد اللغات وتجربة استخدام مناسبة داخل التطبيق.",
     startDate: "فبراير 2025",
     current: true,
     experienceType: "work",
