@@ -86,11 +86,11 @@ function InnerLayout() {
   useEffect(() => {
     if (typeof document !== "undefined" && document.body) {
       if (colorScheme === "dark") {
-        // document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.6af512e76c9fdefe71bd503f270d2527.jpg)`;
-        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.jpg)`;
+        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.6af512e76c9fdefe71bd503f270d2527.jpg)`;
+        // document.body.style.backgroundImage = `url(/assets/assets/images/backgroundDark.jpg)`;
       } else {
-        // document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.e11d4362fa0b0722d848ac4eda377258.jpg)`;
-        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.jpg)`;
+        document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.e11d4362fa0b0722d848ac4eda377258.jpg)`;
+        // document.body.style.backgroundImage = `url(/assets/assets/images/backgroundLight.jpg)`;
       }
     }
   }, [colorScheme]);

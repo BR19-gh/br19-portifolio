@@ -16,7 +16,7 @@ const EXPERIENCES_EN: Experience[] = [
     institution: "Alinma",
     location: "Riyadh, Saudi Arabia",
     description:
-      "Worked on multiple applications within my department serving the bank’s business clients. Developed new features and enhanced existing ones. Collaborated closely with business, design, QA, and backend teams to deliver features efficiently, while ensuring consistency, localization, and accessibility across the applications.",
+      "Contributed to multiple applications within my department serving the bank’s business and internal clients. Developed new features and enhanced existing ones. Collaborated closely with business, design, QA, and backend teams to deliver features efficiently, while ensuring consistency, localization, and accessibility across the applications.",
     startDate: "Feb 2025",
     current: true,
     experienceType: "work",
@@ -87,7 +87,7 @@ export const EXPERIENCES_AR: Experience[] = [
     institution: "بنك الإنماء",
     location: "الرياض، السعودية",
     description:
-      "كجزء من فريق، عملت على عدة تطبيقات داخل القسم تخدم عملاء الأعمال في البنك. طورت مزايا جديدة وحسّنت مزايا قائمة. تعاونت بشكل وثيق مع فرق الأعمال والمصممين وضمان الجودة وفرق الواجهة الخلفية لتسليم المزايا بكفاءة. كما حرصت على الاتساق ودعم تعدد اللغات وتجربة استخدام مناسبة داخل التطبيق.",
+      "كجزء من فريق، عملت على عدة تطبيقات داخل القسم تخدم عملاء الأعمال والعملاء الداخليين في البنك. طورت مزايا جديدة وحسّنت مزايا قائمة. تعاونت بشكل وثيق مع فرق الأعمال والمصممين وضمان الجودة وفرق الواجهة الخلفية لتسليم المزايا بكفاءة. كما حرصت على الاتساق ودعم تعدد اللغات وتجربة استخدام مناسبة داخل التطبيق.",
     startDate: "فبراير 2025",
     current: true,
     experienceType: "work",
