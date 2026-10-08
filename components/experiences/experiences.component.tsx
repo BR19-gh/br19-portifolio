@@ -1,3 +1,4 @@
+import i18n from "@/localization";
 import EXPERIENCES_EN, {
   Experience,
   EXPERIENCES_AR,
@@ -48,82 +49,97 @@ const Experiences = () => {
   );
 
   return (
-    <VerticalTimeline layout="2-columns" lineColor="grey">
-      {data.map((experience, index) => (
-        <VerticalTimelineElement
-          key={index}
-          intersectionObserverProps={{
-            rootMargin: "0px 0px -40px 0px",
-            triggerOnce: false,
-          }}
-          contentStyle={{
-            ...(experience.experienceType === "work"
-              ? styles.workBackground
-              : styles.educationBackground),
-            ...(experience.current ? styles.currentBorder : {}),
-          }}
-          contentArrowStyle={{
-            ...(experience.experienceType === "work"
-              ? styles.workArrow
-              : styles.educationArrow),
-            ...(experience.current ? styles.currentArrow : {}),
-          }}
-          date={`${experience.startDate} - ${
-            experience.current
-              ? language === "ar"
-                ? "الآن"
-                : "Present"
-              : experience.endDate || ""
-          }`}
-          iconStyle={{
-            ...(experience.experienceType === "work"
-              ? styles.workBackground
-              : styles.educationBackground),
-            ...(experience.current ? styles.currentBackground : {}),
-          }}
-          icon={
-            experience.experienceType === "work" ? (
-              <BriefcaseBusiness color={"white"} />
-            ) : (
-              <GraduationCap color={"white"} />
-            )
-          }
-        >
-          <VStack space="lg" style={{ direction: textDir as TextDirection }}>
-            <VStack>
-              <CustomHeading size="xl">{experience.position}</CustomHeading>
-              <HStack space="lg">
-                <CustomHeading size="lg">
-                  {experience.institution}
-                </CustomHeading>
-                <CustomText size="md" className="self-center">
-                  {experience.location}
-                </CustomText>
-              </HStack>
-            </VStack>
-            <HStack
-              space="sm"
-              className="flex-wrap justify-center"
-              reversed={language === "ar"}
+    <VStack space="xl" className="w-full">
+      {(["work", "education", "course"] as const).map((category) => (
+        <VStack key={category} space="lg">
+          <Heading className={`text-center ${language === "ar" ? "font-saudi" : ""}`} size="2xl">
+            {i18n.t(`experience.${category === "work" ? "workTitle" : category === "education" ? "educationTitle" : "coursesTitle"}`)}
+          </Heading>
+          <VerticalTimeline layout="2-columns" lineColor="grey">
+          {data.filter((item) => item.experienceType === category).map((experience, index) => (
+            <VerticalTimelineElement
+              key={index}
+              intersectionObserverProps={{
+                rootMargin: "0px 0px -40px 0px",
+                triggerOnce: false,
+              }}
+              contentStyle={{
+                ...(experience.experienceType === "work"
+                  ? styles.workBackground
+                  : styles.educationBackground),
+                ...(experience.current ? styles.currentBorder : {}),
+              }}
+              contentArrowStyle={{
+                ...(experience.experienceType === "work"
+                  ? styles.workArrow
+                  : styles.educationArrow),
+                ...(experience.current ? styles.currentArrow : {}),
+              }}
+              date={`${experience.startDate} - ${
+                experience.current
+                  ? language === "ar"
+                    ? "الآن"
+                    : "Present"
+                  : experience.endDate || ""
+              }`}
+              iconStyle={{
+                ...(experience.experienceType === "work"
+                  ? styles.workBackground
+                  : styles.educationBackground),
+                ...(experience.current ? styles.currentBackground : {}),
+              }}
+              icon={
+                experience.experienceType === "work" ? (
+                  <BriefcaseBusiness color={"white"} />
+                ) : (
+                  <GraduationCap color={"white"} />
+                )
+              }
             >
-              {experience.skills?.map((skill, index) => (
-                <Badge
-                  key={index}
-                  className="bg-white"
-                  size="sm"
-                  variant="solid"
-                  action={"muted"}
+              <VStack space="lg" style={{ direction: textDir as TextDirection }}>
+                <VStack>
+                  <CustomHeading size="xl">{experience.position}</CustomHeading>
+                  <HStack space="lg">
+                    <CustomHeading size="lg">
+                      {experience.institution}
+                    </CustomHeading>
+                    <CustomText size="md" className="self-center">
+                      {experience.location}
+                    </CustomText>
+                  </HStack>
+                </VStack>
+                <HStack
+                  space="sm"
+                  className="flex-wrap justify-center"
+                  reversed={language === "ar"}
                 >
-                  <BadgeText className="text-black">{skill}</BadgeText>
-                </Badge>
-              ))}
-            </HStack>
-            <CustomText>{experience.description}</CustomText>
-          </VStack>
-        </VerticalTimelineElement>
+                  {experience.skills?.map((skill, index) => (
+                    <Badge
+                      key={index}
+                      className="bg-white"
+                      size="sm"
+                      variant="solid"
+                      action={"muted"}
+                    >
+                      <BadgeText className="text-black">{skill}</BadgeText>
+                    </Badge>
+                  ))}
+                </HStack>
+                {experience.highlights ? (
+                  <VStack space="sm">
+                    {experience.highlights.map((highlight) => (
+                      <CustomText key={highlight}>{`• ${highlight}`}</CustomText>
+                    ))}
+                  </VStack>
+                ) : <CustomText>{experience.description}</CustomText>}
+              </VStack>
+            </VerticalTimelineElement>
+          ))}
+          <VerticalTimelineElement iconStyle={styles.start} icon={<Star />} />
+          </VerticalTimeline>
+        </VStack>
       ))}
-      <VerticalTimelineElement iconStyle={styles.start} icon={<Star />} />
-    </VerticalTimeline>
+    </VStack>
   );
 };
 

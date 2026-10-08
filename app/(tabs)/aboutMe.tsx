@@ -1,4 +1,4 @@
-import { Button, ButtonIcon } from "@/components/ui/button";
+import { Button } from "@/components/ui/button";
 import { Center } from "@/components/ui/center";
 import { Heading } from "@/components/ui/heading";
 import { HStack } from "@/components/ui/hstack";
@@ -66,7 +66,7 @@ export default function AboutMe() {
       </HStack>
       <VStack
         space="lg"
-        className={"mx-36"}
+        className={isPhone ? "mx-5" : "mx-36"}
         style={styles.aboutMeContainer(textDir as TextDirection)}
       >
         <VStack space="xs">
@@ -99,6 +99,18 @@ export default function AboutMe() {
         >
           {i18n.t("aboutMe.body")}
         </Text>
+        <VStack space="md">
+          <VStack space="xs">
+            <CustomHeading size="lg">{i18n.t("aboutMe.toolsTitle")}</CustomHeading>
+            <CustomText>{i18n.t("aboutMe.toolsValue")}</CustomText>
+          </VStack>
+          <VStack space="xs">
+            <CustomHeading size="lg">{i18n.t("aboutMe.languagesTitle")}</CustomHeading>
+            <CustomText>{i18n.t("aboutMe.arabicValue")}</CustomText>
+            <CustomText>{i18n.t("aboutMe.englishValue")}</CustomText>
+            <CustomText>{i18n.t("aboutMe.stepValue")}</CustomText>
+          </VStack>
+        </VStack>
         <VStack space="lg">
           <VStack>
             <TouchableOpacity
