@@ -40,13 +40,19 @@
     "name": "I'm Ibrahim",
     "position1": "Web Developer",
     "position2": "Mobile Developer",
-    "body": "I hold a bachelor’s degree in computer science with a strong background in mobile and web development, specializing in the React ecosystem. With professional experience in developing and enhancing mobile applications, I have applied my knowledge in several projects and contributed to building software solutions. Throughout my professional journey, I have earned various certifications and completed industry-relevant courses. I am eager to contribute to innovative projects, and making a meaningful impact in the world of software development.",
+    "body": "Software Engineer with a bachelor’s degree in Computer Science and experience in mobile and web development, specializing in React and React Native. Skilled in developing application features, improving existing functionality, and collaborating with cross-functional teams. Additional experience in project management, coordinating team activities and tracking delivery progress. Committed to continuous learning and building practical, user-focused software solutions.",
     "emailTitle": "Email",
     "locationTitle": "Location",
-    "locationValue": "Qassim - Riyadh, Saudi Arabia",
+    "locationValue": "Riyadh / Qassim, Saudi Arabia",
     "resume": "Resume",
     "projects": "Projects",
-    "experience": "Experience"
+    "experience": "Experience",
+    "toolsTitle": "Tools & Technologies",
+    "toolsValue": "React Native, Expo, React, TypeScript, JavaScript, HTML, CSS, Bootstrap, Redux, Python, Flask, SQL, Git, npm, Yarn, Figma, Jira",
+    "languagesTitle": "Languages",
+    "arabicValue": "Arabic — Native or bilingual proficiency",
+    "englishValue": "English — Full professional proficiency",
+    "stepValue": "STEP: 95/100"
   },
   "experience": {
     "title": "Experience",
@@ -54,7 +60,10 @@
     "company": "Company",
     "position": "Position",
     "duration": "Duration",
-    "description": "Description"
+    "description": "Description",
+    "workTitle": "Work Experience",
+    "educationTitle": "Education",
+    "coursesTitle": "Courses & Professional Development"
   },
   "resume": {
     "title": "Resume",

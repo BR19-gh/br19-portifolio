@@ -3,10 +3,11 @@ export type Experience = {
   institution: string;
   location: string;
   description: string;
+  highlights?: string[];
   startDate: string;
   endDate?: string;
   current: boolean;
-  experienceType: "work" | "education";
+  experienceType: "work" | "education" | "course";
   skills?: string[];
 };
 
@@ -16,7 +17,13 @@ const EXPERIENCES_EN: Experience[] = [
     institution: "Alinma",
     location: "Riyadh, Saudi Arabia",
     description:
-      "Contributed to multiple applications within my department serving the bank’s business and internal clients. Developed new features and enhanced existing ones. Collaborated closely with business, design, QA, and backend teams to deliver features efficiently, while ensuring consistency, localization, and accessibility across the applications.",
+      "",
+    highlights: [
+      "Develop and enhance application features that support business workflows and serve the bank’s business and internal users.",
+      "Serve as Project Manager, coordinating team activities, supporting delivery planning, and tracking project progress.",
+      "Work closely with business, design, QA, and backend teams to deliver features effectively.",
+      "Participate in code reviews, sprint planning, and issue tracking.",
+    ],
     startDate: "Feb 2025",
     current: true,
     experienceType: "work",
@@ -28,7 +35,8 @@ const EXPERIENCES_EN: Experience[] = [
       "Expo",
       "Redux",
       "Figma",
-      "Agile/Scrum",
+      "Project Management",
+      "Jira",
     ],
   },
   {
@@ -36,7 +44,11 @@ const EXPERIENCES_EN: Experience[] = [
     institution: "InnovationTeam",
     location: "Riyadh, Saudi Arabia",
     description:
-      "Worked in stc’s Applications section through InnovationTeam. Focused on solving problems and developing innovative solutions after completing a training program in React and related tools.",
+      "",
+    highlights: [
+      "Contributed to bug fixes and application maintenance within stc’s Applications department through InnovationTeam.",
+      "Completed training in React and other development tools, including company-sponsored Udacity training.",
+    ],
     startDate: "Sep 2022",
     endDate: "Dec 2024",
     current: false,
@@ -48,12 +60,12 @@ const EXPERIENCES_EN: Experience[] = [
     institution: "Qassim University",
     location: "Qassim, Saudi Arabia",
     description:
-      "Graduated with GPA 4.27/5 (Very Good) with Second Class Honor. Contributed to the 'USAP' graduation project, building frontend modules with Flutter to automate academic tasks.",
+      "Graduated with a GPA of 4.27/5.00 (Very Good) and Second Class Honors.",
     startDate: "Aug 2017",
     endDate: "May 2022",
     current: false,
     experienceType: "education",
-    skills: ["Flutter", "Dart", "Software Design"],
+    skills: [],
   },
   {
     position: "Nanodegree: React & Redux Development",
@@ -64,7 +76,7 @@ const EXPERIENCES_EN: Experience[] = [
     startDate: "Jan 2024",
     endDate: "Feb 2024",
     current: false,
-    experienceType: "education",
+    experienceType: "course",
     skills: ["React", "Redux", "Hooks", "React Native", "JavaScript"],
   },
   {
@@ -76,7 +88,7 @@ const EXPERIENCES_EN: Experience[] = [
     startDate: "Jun 2021",
     endDate: "Sep 2021",
     current: false,
-    experienceType: "education",
+    experienceType: "course",
     skills: ["Python", "Flask", "SQL", "Docker", "APIs", "Testing"],
   },
 ];
@@ -87,7 +99,13 @@ export const EXPERIENCES_AR: Experience[] = [
     institution: "بنك الإنماء",
     location: "الرياض، السعودية",
     description:
-      "كجزء من فريق، عملت على عدة تطبيقات داخل القسم تخدم عملاء الأعمال والعملاء الداخليين في البنك. طورت مزايا جديدة وحسّنت مزايا قائمة. تعاونت بشكل وثيق مع فرق الأعمال والمصممين وضمان الجودة وفرق الواجهة الخلفية لتسليم المزايا بكفاءة. كما حرصت على الاتساق ودعم تعدد اللغات وتجربة استخدام مناسبة داخل التطبيق.",
+      "",
+    highlights: [
+      "أطوّر مزايا التطبيقات وأحسّنها لدعم إجراءات العمل وخدمة عملاء الأعمال والمستخدمين الداخليين في البنك.",
+      "أتولى مسؤوليات مدير مشروع، بما يشمل تنسيق أعمال الفريق ودعم تخطيط التنفيذ ومتابعة تقدم المشروع.",
+      "أتعاون مع فرق الأعمال والتصميم وضمان الجودة والأنظمة الخلفية لتسليم المزايا بفعالية.",
+      "أشارك في مراجعة الكود وتخطيط دورات العمل ومتابعة المشكلات.",
+    ],
     startDate: "فبراير 2025",
     current: true,
     experienceType: "work",
@@ -99,7 +117,8 @@ export const EXPERIENCES_AR: Experience[] = [
       "Expo",
       "Redux",
       "Figma",
-      "Agile/Scrum",
+      "Project Management",
+      "Jira",
     ],
   },
   {
@@ -107,7 +126,11 @@ export const EXPERIENCES_AR: Experience[] = [
     institution: "InnovationTeam / stc",
     location: "الرياض، السعودية",
     description:
-      "عملت في قسم التطبيقات بشركة stc من خلال InnovationTeam. ركزنا على حل المشكلات وتطوير حلول مبتكرة بعد إتمام برنامج تدريبي في React وأدوات مرتبطة بها.",
+      "",
+    highlights: [
+      "ساهمت في إصلاح الأخطاء وصيانة التطبيقات ضمن قسم التطبيقات في stc من خلال InnovationTeam.",
+      "أكملت تدريبًا في React وأدوات تطوير أخرى، شمل برنامج Udacity ممولًا من جهة العمل.",
+    ],
     startDate: "سبتمبر 2022",
     endDate: "ديسمبر 2024",
     current: false,
@@ -119,12 +142,12 @@ export const EXPERIENCES_AR: Experience[] = [
     institution: "جامعة القصيم",
     location: "القصيم، السعودية",
     description:
-      "تخرجت بمعدل 4.27 من 5 (تقدير جيد جدًا مع مرتبة الشرف الثانية). ساهمت في مشروع التخرج 'USAP'، بتطوير واجهات أمامية باستخدام Flutter لتسهيل الاحتياجات الأكاديمية.",
+      "تخرجت بمعدل 4.27 من 5، بتقدير جيد جدًا مع مرتبة الشرف الثانية.",
     startDate: "أغسطس 2017",
     endDate: "مايو 2022",
     current: false,
     experienceType: "education",
-    skills: ["Flutter", "Dart", "تصميم التطبيقات"],
+    skills: [],
   },
   {
     position: "Nanodegree: React وRedux",
@@ -135,7 +158,7 @@ export const EXPERIENCES_AR: Experience[] = [
     startDate: "يناير 2024",
     endDate: "فبراير 2024",
     current: false,
-    experienceType: "education",
+    experienceType: "course",
     skills: ["React", "Redux", "Hooks", "React Native", "JavaScript"],
   },
   {
@@ -147,7 +170,7 @@ export const EXPERIENCES_AR: Experience[] = [
     startDate: "يونيو 2021",
     endDate: "سبتمبر 2021",
     current: false,
-    experienceType: "education",
+    experienceType: "course",
     skills: ["Python", "Flask", "SQL", "APIs", "الإختبارات"],
   },
 ];
