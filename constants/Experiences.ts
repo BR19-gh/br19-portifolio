@@ -16,8 +16,7 @@ const EXPERIENCES_EN: Experience[] = [
     position: "Digital Solutions Developer",
     institution: "Alinma",
     location: "Riyadh, Saudi Arabia",
-    description:
-      "",
+    description: "",
     highlights: [
       "Develop and enhance application features that support business workflows and serve the bank’s business and internal users.",
       "Serve as Project Manager, coordinating team activities, supporting delivery planning, and tracking project progress.",
@@ -43,11 +42,10 @@ const EXPERIENCES_EN: Experience[] = [
     position: "Software Engineer",
     institution: "InnovationTeam",
     location: "Riyadh, Saudi Arabia",
-    description:
-      "",
+    description: "",
     highlights: [
       "Contributed to bug fixes and application maintenance within stc’s Applications department through InnovationTeam.",
-      "Completed training in React and other development tools, including company-sponsored Udacity training.",
+      "Completed training in React and other development tools.",
     ],
     startDate: "Sep 2022",
     endDate: "Dec 2024",
@@ -98,8 +96,7 @@ export const EXPERIENCES_AR: Experience[] = [
     position: "مطوّر حلول رقمية",
     institution: "بنك الإنماء",
     location: "الرياض، السعودية",
-    description:
-      "",
+    description: "",
     highlights: [
       "أطوّر مزايا التطبيقات وأحسّنها لدعم إجراءات العمل وخدمة عملاء الأعمال والمستخدمين الداخليين في البنك.",
       "أتولى مسؤوليات مدير مشروع، بما يشمل تنسيق أعمال الفريق ودعم تخطيط التنفيذ ومتابعة تقدم المشروع.",
@@ -125,11 +122,10 @@ export const EXPERIENCES_AR: Experience[] = [
     position: "مهندس برمجيات",
     institution: "InnovationTeam / stc",
     location: "الرياض، السعودية",
-    description:
-      "",
+    description: "",
     highlights: [
       "ساهمت في إصلاح الأخطاء وصيانة التطبيقات ضمن قسم التطبيقات في stc من خلال InnovationTeam.",
-      "أكملت تدريبًا في React وأدوات تطوير أخرى، شمل برنامج Udacity ممولًا من جهة العمل.",
+      "أكملت تدريبًا في React وأدوات تطوير أخرى.",
     ],
     startDate: "سبتمبر 2022",
     endDate: "ديسمبر 2024",

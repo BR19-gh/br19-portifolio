@@ -76,7 +76,7 @@ export default function AboutMe() {
               id="typewriter"
               size="md"
               style={styles.headingStyle(textDir as TextDirection)}
-              className="font-handjet-bold mt-0.5"
+              className="font-bold mt-0.5"
             >
               <Typewriter
                 words={[i18n.t("home.position1"), i18n.t("home.position2")]}
@@ -101,11 +101,15 @@ export default function AboutMe() {
         </Text>
         <VStack space="md">
           <VStack space="xs">
-            <CustomHeading size="lg">{i18n.t("aboutMe.toolsTitle")}</CustomHeading>
+            <CustomHeading size="lg">
+              {i18n.t("aboutMe.toolsTitle")}
+            </CustomHeading>
             <CustomText>{i18n.t("aboutMe.toolsValue")}</CustomText>
           </VStack>
           <VStack space="xs">
-            <CustomHeading size="lg">{i18n.t("aboutMe.languagesTitle")}</CustomHeading>
+            <CustomHeading size="lg">
+              {i18n.t("aboutMe.languagesTitle")}
+            </CustomHeading>
             <CustomText>{i18n.t("aboutMe.arabicValue")}</CustomText>
             <CustomText>{i18n.t("aboutMe.englishValue")}</CustomText>
             <CustomText>{i18n.t("aboutMe.stepValue")}</CustomText>
