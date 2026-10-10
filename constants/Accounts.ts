@@ -1,28 +1,30 @@
+import { Coffee, Github, Linkedin, Mail, MessageCircle } from "lucide-react-native";
+
 const ACCOUNTS = [
   {
     name: "github",
-    icon: "github",
+    icon: Github,
     link: "https://github.com/BR19-gh",
   },
   {
     name: "linkedin",
-    icon: "linkedin",
+    icon: Linkedin,
     link: "https://www.linkedin.com/in/ibrahim-alkhowaiter",
   },
   {
     name: "email",
-    icon: "envelope",
-    link: "mailto: Ibrahim-abdalaziz@hotmail.com",
+    icon: Mail,
+    link: "mailto:ibrahim-abdalaziz@hotmail.com",
   },
   {
     name: "whatsapp",
-    icon: "whatsapp",
+    icon: MessageCircle,
     link: "https://wa.me/966500885115",
   },
 
   {
     name: "buymecoffee",
-    icon: "coffee",
+    icon: Coffee,
     link: "https://buymeacoffee.com/br19",
   },
 ];

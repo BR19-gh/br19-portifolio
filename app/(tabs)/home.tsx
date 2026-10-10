@@ -20,7 +20,6 @@ import {
 } from "lucide-react-native";
 import { AccountButton } from "@/components/home/account-button";
 import { ACCOUNTS } from "@/constants";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { useWindowWidth } from "@/contexts/WindowWidthContext";
 import Head from "expo-router/head";
 import styles from "@/app/(tabs)/styles";
@@ -69,7 +68,7 @@ export default function Home() {
               id="typewriter"
               size="lg"
               style={styles.headingStyle(textDir as TextDirection)}
-              className="font-handjet-bold text-primary-400 mt-0.5"
+              className="font-bold text-primary-400 mt-0.5"
             >
               <Typewriter
                 words={[i18n.t("home.position1"), i18n.t("home.position2")]}
@@ -107,7 +106,8 @@ export default function Home() {
               <AccountButton
                 key={account.name}
                 link={account.link}
-                icon={account.icon as keyof typeof FontAwesome.glyphMap}
+                name={account.name}
+                icon={account.icon}
               />
             ))}
           </HStack>

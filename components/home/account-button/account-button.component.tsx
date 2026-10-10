@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/button";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { Button, ButtonIcon } from "@/components/ui/button";
+import type { LucideIcon } from "lucide-react-native";
 import { Alert, Linking } from "react-native";
 
 interface AccountButtonProps {
-  name?: string;
-  icon: keyof typeof FontAwesome.glyphMap;
+  name: string;
+  icon: LucideIcon;
   link: string;
 }
 
-const AccountButton: React.FC<AccountButtonProps> = ({ icon, link }) => {
+const AccountButton: React.FC<AccountButtonProps> = ({ name, icon, link }) => {
   const handlePress = async () => {
     const supported = await Linking.canOpenURL(link);
     if (supported) {
@@ -18,11 +18,18 @@ const AccountButton: React.FC<AccountButtonProps> = ({ icon, link }) => {
     }
   };
   return (
-    <Button size="lg" action="secondary" className="w-12" onPress={handlePress}>
-      <FontAwesome
-        className="text-black dark:text-white"
-        name={icon}
-        size={20}
+    <Button
+      size="lg"
+      action="secondary"
+      className="w-12 px-0"
+      onPress={handlePress}
+      accessibilityLabel={name}
+    >
+      <ButtonIcon
+        className="shrink-0 text-black dark:text-white"
+        as={icon}
+        width={20}
+        height={20}
       />
     </Button>
   );
